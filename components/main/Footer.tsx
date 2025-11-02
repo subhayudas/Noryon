@@ -1,38 +1,14 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
-import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaArrowUp, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
+import { motion, useAnimation } from "framer-motion";
+import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { IoIosArrowUp } from "react-icons/io";
 
 const Footer = () => {
-  const [isVisible, setIsVisible] = useState(false);
   const controls = useAnimation();
-  
-  // Handle scroll to top button visibility
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 500) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Scroll to top function
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
 
   // Animation for footer elements
   useEffect(() => {
@@ -76,36 +52,6 @@ const Footer = () => {
     }
   };
 
-  // Scroll to top button animation
-  const scrollButtonVariants = {
-    initial: { scale: 0, opacity: 0 },
-    animate: { 
-      scale: 1, 
-      opacity: 1,
-      transition: {
-        type: "spring" as const,
-        stiffness: 300,
-        damping: 15
-      }
-    },
-    exit: { 
-      scale: 0, 
-      opacity: 0,
-      transition: {
-        duration: 0.3
-      }
-    },
-    hover: {
-      scale: 1.1,
-      y: -5,
-      boxShadow: "0 0 20px rgba(249, 115, 22, 0.8)",
-      transition: {
-        type: "spring" as const,
-        stiffness: 400,
-        damping: 10
-      }
-    }
-  };
   
   // Text reveal animation
   const textRevealVariants = {
@@ -512,30 +458,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Scroll to top button */}
-      <AnimatePresence>
-        {isVisible && (
-          <motion.button
-            onClick={scrollToTop}
-            variants={scrollButtonVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            whileHover="hover"
-            className="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white flex items-center justify-center shadow-xl z-50 border border-orange-400/30 backdrop-blur-sm"
-            aria-label="Scroll to top"
-          >
-            <motion.div
-              animate={{ y: [0, -3, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="flex items-center justify-center"
-            >
-              <FaArrowUp size={20} />
-            </motion.div>
-          </motion.button>
-        )}
-      </AnimatePresence>
     </footer>
   );
 };
