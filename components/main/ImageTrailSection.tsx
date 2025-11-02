@@ -25,9 +25,6 @@ const ImageTrailSection = () => {
       maxNumberOfImages={6}
       fadeAnimation={true}
     >
-      {/* Background gradient similar to Hero */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black via-gray-900/50 to-black z-10 pointer-events-none"></div>
-      
       {/* Subtle overlay for depth */}
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-900/10 via-transparent to-pink-900/10 z-15 pointer-events-none"></div>
       

@@ -252,13 +252,6 @@ const Footer = () => {
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
-                  <Link href="#Approach" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Our Approach
-                  </Link>
-                </motion.div>
-              </li>
-              <li>
-                <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#ProcessTimeline" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
                     <span className="text-orange-500 mr-2">›</span> Process
                   </Link>

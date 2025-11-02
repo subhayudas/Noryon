@@ -7,7 +7,6 @@ import { ZoomParallax } from "@/components/main/ZoomParallax";
 import FAQSection from "@/components/main/FAQSection";
 import ContactForm from "@/components/main/ContactForm";
 import AboutUs from "@/components/main/AboutUs";
-import Approach from "@/components/main/Approach";
 import ChooseUs from "@/components/main/ChooseUs";
 import TerminalDemo from "@/components/main/TerminalDemo";
 import FeatureShowcase from "@/components/main/FeatureShowcase";
@@ -20,7 +19,6 @@ import ContainerScroll from "@/components/main/ContainerScroll";
 
 // Import the BookingForm component at the top of your file
 import BookingForm from '@/components/main/BookingForm';
-import CalendlyWidget from '@/components/main/CalendlyWidget';
 
 export default function Home() {
   return (
@@ -63,11 +61,6 @@ export default function Home() {
         
         
         
-        {/* Approach Section */}
-        <div className="border-t border-white">
-          <Approach />
-        </div>
-
         {/* Our Approach - Scroll Showcase */}
         <div className="border-t border-white">
           <ContainerScroll
@@ -116,11 +109,6 @@ export default function Home() {
         {/* Booking Form */}
         <div className="border-t border-white">
           <BookingForm />
-        </div>
-
-        {/* Calendly Booking Widget */}
-        <div className="border-t border-white">
-          <CalendlyWidget />
         </div>
       </div>
     </main>
