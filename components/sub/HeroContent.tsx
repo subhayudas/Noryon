@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   slideInFromLeft,
@@ -9,8 +9,21 @@ import {
 } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import { ShimmerButton } from "../ui/shimmer-button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HeroContent = () => {
+  const { t, language } = useLanguage();
+  const [forceUpdate, setForceUpdate] = useState(0);
+  
+  // Listen for language changes to force re-render
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      setForceUpdate(prev => prev + 1);
+    };
+    window.addEventListener("languageChanged", handleLanguageChange);
+    return () => window.removeEventListener("languageChanged", handleLanguageChange);
+  }, []);
+  
   const handleBookCall = () => {
     // Trigger Calendly popup
     const event = new CustomEvent("openCalendlyPopup");
@@ -31,7 +44,7 @@ const HeroContent = () => {
         >
           <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
           <span className="text-xs font-medium tracking-wider text-white/90 uppercase">
-            NORYON.AI
+            {t("hero.badge")}
           </span>
         </motion.div>
 
@@ -46,10 +59,10 @@ const HeroContent = () => {
               letterSpacing: "-0.02em"
             }}
           >
-            <span className="block mb-2 font-light">INTELLIGENT</span>
+            <span className="block mb-2 font-light">{t("hero.heading1")}</span>
             <span className="block">
-              <span className="font-medium text-[#04a8ae]">AI-Powered</span>
-              <span className="font-light"> SOLUTIONS</span>
+              <span className="font-medium text-[#04a8ae]">{t("hero.heading2")}</span>
+              <span className="font-light"> {t("hero.heading3")}</span>
             </span>
           </h1>
         </motion.div>
@@ -75,7 +88,7 @@ const HeroContent = () => {
             shimmerDuration="2s"
             className="text-white font-medium text-sm px-6 py-3 shadow-lg hover:shadow-xl"
           >
-            Book A Call
+            {t("hero.bookCall")}
           </ShimmerButton>
         </motion.div>
       </div>

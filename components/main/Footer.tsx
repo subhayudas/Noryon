@@ -6,9 +6,27 @@ import Image from "next/image";
 import { motion, useAnimation } from "framer-motion";
 import { FaTwitter, FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t, language } = useLanguage();
   const controls = useAnimation();
+
+  // Listen for language changes to force re-render
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      // Force re-render when language changes
+      controls.start({
+        y: 0,
+        opacity: 1,
+        transition: {
+          duration: 0,
+        }
+      });
+    };
+    window.addEventListener("languageChanged", handleLanguageChange);
+    return () => window.removeEventListener("languageChanged", handleLanguageChange);
+  }, [controls]);
 
   // Animation for footer elements
   useEffect(() => {
@@ -122,7 +140,7 @@ const Footer = () => {
               </motion.h2>
             </div>
             <p className="text-gray-300 text-center lg:text-left max-w-md leading-relaxed">
-              Transforming businesses with AI-powered automation, intelligent chatbots, and smart solutions that drive growth and efficiency.
+              {t("footer.tagline")}
             </p>
             
             {/* Social Icons */}
@@ -192,13 +210,13 @@ const Footer = () => {
                 >
                   ✉️
                 </motion.span>
-                Stay Connected
+                {t("footer.newsletterTitle")}
               </h3>
-              <p className="text-gray-300 mb-6">Get exclusive updates, insights, and special offers directly to your inbox.</p>
+              <p className="text-gray-300 mb-6">{t("footer.newsletterDesc")}</p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <input 
                   type="email" 
-                  placeholder="Your email address" 
+                  placeholder={t("footer.emailPlaceholder")} 
                   className="flex-grow px-4 py-3 bg-white/10 border border-purple-900/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-white"
                 />
                 <motion.button 
@@ -206,7 +224,7 @@ const Footer = () => {
                   whileTap={{ scale: 0.95 }}
                   className="px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-lg shadow-lg hover:shadow-orange-500/30 transition-all duration-300 whitespace-nowrap"
                 >
-                  Subscribe
+                  {t("footer.subscribe")}
                 </motion.button>
               </div>
             </div>
@@ -227,7 +245,7 @@ const Footer = () => {
             className="col-span-1"
           >
             <h3 className="text-xl font-semibold text-white mb-6 relative inline-block font-helvetica-neue">
-              Navigation
+              {t("footer.navigation")}
               <motion.span 
                 className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500"
                 initial={{ width: 0 }}
@@ -239,28 +257,28 @@ const Footer = () => {
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#Hero" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Home
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.home")}
                   </Link>
                 </motion.div>
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#Services" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Services
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.services")}
                   </Link>
                 </motion.div>
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#ProcessTimeline" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Process
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.process")}
                   </Link>
                 </motion.div>
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#TeamSection" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Our Team
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.ourTeam")}
                   </Link>
                 </motion.div>
               </li>
@@ -276,7 +294,7 @@ const Footer = () => {
             className="col-span-1"
           >
             <h3 className="text-xl font-semibold text-white mb-6 relative inline-block font-helvetica-neue">
-              Our Services
+              {t("footer.ourServices")}
               <motion.span 
                 className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500"
                 initial={{ width: 0 }}
@@ -288,35 +306,35 @@ const Footer = () => {
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#Services" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> AI Chatbots
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.aiChatbots")}
                   </Link>
                 </motion.div>
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#Services" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Voice AI
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.voiceAi")}
                   </Link>
                 </motion.div>
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#Services" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Business Automation
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.businessAutomation")}
                   </Link>
                 </motion.div>
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#Services" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> Review Management
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.reviewManagement")}
                   </Link>
                 </motion.div>
               </li>
               <li>
                 <motion.div variants={linkVariants} initial="initial" whileHover="hover">
                   <Link href="#Services" className="text-gray-300 hover:text-orange-500 transition-all flex items-center">
-                    <span className="text-orange-500 mr-2">›</span> AI Analytics
+                    <span className="text-orange-500 mr-2">›</span> {t("footer.aiAnalytics")}
                   </Link>
                 </motion.div>
               </li>
@@ -334,7 +352,7 @@ const Footer = () => {
             className="col-span-1"
           >
             <h3 className="text-xl font-semibold text-white mb-6 relative inline-block font-helvetica-neue">
-              Contact Us
+              {t("footer.contactUs")}
               <motion.span 
                 className="absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-amber-500"
                 initial={{ width: 0 }}
@@ -351,7 +369,7 @@ const Footer = () => {
                 <div className="mt-1 text-orange-500 group-hover:text-orange-400 transition-colors">
                   <FaMapMarkerAlt className="h-5 w-5" />
                 </div>
-                <p className="text-gray-300 group-hover:text-white transition-colors">Montreal, Canada</p>
+                <p className="text-gray-300 group-hover:text-white transition-colors">{t("footer.location")}</p>
               </motion.div>
               <motion.div 
                 className="flex items-start space-x-3 group"
@@ -384,7 +402,7 @@ const Footer = () => {
                   className="inline-block px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium rounded-lg shadow-lg hover:shadow-orange-500/40 transition-all duration-300"
                 >
                   <span className="flex items-center justify-center">
-                    <span className="mr-2">Book a Consultation</span>
+                    <span className="mr-2">{t("footer.bookConsultation")}</span>
                     <motion.span 
                       animate={{ x: [0, 4, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
@@ -443,7 +461,7 @@ const Footer = () => {
                 whileHover={{ color: "#00c8cf" }}
                 transition={{ duration: 0.2 }}
               >
-                © {new Date().getFullYear()} Noryon. All rights reserved.
+                {t("footer.rights").replace("{year}", new Date().getFullYear().toString())}
               </motion.span>
               
             </motion.div>

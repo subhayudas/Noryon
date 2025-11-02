@@ -16,6 +16,7 @@ import TeamSection from "@/components/main/TeamSection";
 import CallToAction from "@/components/main/CallToAction";
 import ContentMarketingCards from "@/components/main/ContentMarketingCards";
 import ContainerScroll from "@/components/main/ContainerScroll";
+import ContainerScrollTitle from "@/components/main/ContainerScrollTitle";
 
 // Import the BookingForm component at the top of your file
 import BookingForm from '@/components/main/BookingForm';
@@ -64,11 +65,7 @@ export default function Home() {
         {/* Our Approach - Scroll Showcase */}
         <div className="border-t border-white">
           <ContainerScroll
-            titleComponent={
-              <div className="font-bold text-4xl md:text-5xl text-white">
-                We reduce your Expenses
-              </div>
-            }
+            titleComponent={<ContainerScrollTitle />}
           >
             <div className="flex h-full w-full items-center justify-center">
               <img

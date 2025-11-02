@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SparklesIcon, XMarkIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { createPortal } from "react-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ServiceDrawerProps {
   isOpen: boolean;
@@ -118,6 +119,7 @@ const serviceFeatures = {
 };
 
 export function ServiceDrawer({ isOpen, onClose, service }: ServiceDrawerProps) {
+  const { t } = useLanguage();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -232,7 +234,7 @@ export function ServiceDrawer({ isOpen, onClose, service }: ServiceDrawerProps) 
               >
                 <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
                 <span className="text-xs font-medium tracking-wider text-white/90 uppercase font-questrial">
-                  What's Included
+                  {t("serviceDrawer.whatsIncluded")}
                 </span>
               </motion.div>
 
@@ -270,7 +272,7 @@ export function ServiceDrawer({ isOpen, onClose, service }: ServiceDrawerProps) 
                   onClick={onClose}
                 >
                   <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
-                  Get Started with {service.title}
+                  {t("serviceDrawer.getStartedWith")} {service.title}
                 </motion.a>
               </motion.div>
             </div>

@@ -4,25 +4,39 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { SparklesIcon, ChevronDownIcon } from "@heroicons/react/24/solid";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageToggle from "@/components/ui/LanguageToggle";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t, language } = useLanguage();
 
-  // Navigation items
+  // Navigation items with translations - will re-render when language changes
   const navigationItems = [
-    { name: "Home", href: "#Hero" },
-    { name: "About", href: "#aboutus" },
-    { name: "Services", href: "#Services" },
-    { name: "Portfolio", href: "#Portfolio" },
-    { name: "Projects", href: "#projects" },
-    { name: "Team", href: "#TeamSection" },
-    { name: "Process", href: "#ProcessTimeline" },
-    { name: "FAQ", href: "#FAQSection" },
-    { name: "Contact", href: "#ContactForm" },
-    { name: "Book a Call", href: "#BookingForm" },
+    { name: t("navbar.home"), href: "#Hero", key: "home" },
+    { name: t("navbar.about"), href: "#aboutus", key: "about" },
+    { name: t("navbar.services"), href: "#Services", key: "services" },
+    { name: t("navbar.portfolio"), href: "#Portfolio", key: "portfolio" },
+    { name: t("navbar.projects"), href: "#projects", key: "projects" },
+    { name: t("navbar.team"), href: "#TeamSection", key: "team" },
+    { name: t("navbar.process"), href: "#ProcessTimeline", key: "process" },
+    { name: t("navbar.faq"), href: "#FAQSection", key: "faq" },
+    { name: t("navbar.contact"), href: "#ContactForm", key: "contact" },
+    { name: t("navbar.bookCall"), href: "#BookingForm", key: "bookCall" },
   ];
+
+  // Listen for language changes to force re-render
+  useEffect(() => {
+    const handleLanguageChange = () => {
+      // Force re-render when language changes
+      setIsMenuOpen(false);
+      setIsDropdownOpen(false);
+    };
+    window.addEventListener("languageChanged", handleLanguageChange);
+    return () => window.removeEventListener("languageChanged", handleLanguageChange);
+  }, []);
 
   // Handle scroll effect
   useEffect(() => {
@@ -293,6 +307,9 @@ const Navbar = () => {
 
           {/* Desktop Navigation with Dropdown */}
           <div className="hidden md:flex md:items-center md:space-x-6">
+            {/* Language Toggle */}
+            <LanguageToggle />
+            
             {/* Navigation Dropdown */}
             <div className="relative">
               <motion.button
@@ -302,7 +319,7 @@ const Navbar = () => {
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <span className="font-medium">Navigate</span>
+                <span className="font-medium">{t("navbar.navigate")}</span>
                 <motion.div
                   animate={{ rotate: isDropdownOpen ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
@@ -325,7 +342,7 @@ const Navbar = () => {
                     <div className="py-2">
                       {navigationItems.map((item, index) => (
                         <motion.button
-                          key={item.name}
+                          key={item.key}
                           variants={dropdownItemVariants}
                           onClick={() => handleNavigation(item.href)}
                           className="w-full text-left px-4 py-2.5 text-white hover:text-orange-400 hover:bg-white/10 transition-all duration-200 flex items-center group"
@@ -466,7 +483,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                Text Us
+                {t("navbar.textUs")}
                 <motion.svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5 ml-1.5"
@@ -496,15 +513,20 @@ const Navbar = () => {
             className="fixed top-[calc(4rem)] left-3 right-3 bg-gradient-to-r from-[#03001417] via-[#03001450] to-[#03001417] backdrop-blur-lg border border-[#ffffff20] rounded-xl shadow-xl p-4 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto touch-manipulation"
           >
             <div className="flex flex-col space-y-5">
+              {/* Language Toggle for Mobile */}
+              <motion.div className="flex justify-center" variants={menuItemVariants}>
+                <LanguageToggle />
+              </motion.div>
+              
               {/* Navigation Links for Mobile */}
               <motion.div className="space-y-1" variants={menuItemVariants}>
                 <h3 className="text-white font-semibold text-sm uppercase tracking-wider px-3 py-2 text-center font-helvetica-neue">
-                  Navigate
+                  {t("navbar.navigate")}
                 </h3>
                 <div className="grid grid-cols-2 gap-2">
                   {navigationItems.map((item) => (
                     <motion.button
-                      key={item.name}
+                      key={item.key}
                       onClick={() => handleNavigation(item.href)}
                       className="text-white hover:text-orange-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-white/10 text-left"
                       whileHover={{ scale: 1.02 }}
@@ -578,7 +600,7 @@ const Navbar = () => {
                   onClick={handleLinkClick}
                   className="block w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium py-3 px-4 rounded-xl text-center hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-300"
                 >
-                  Text Us
+                  {t("navbar.textUs")}
                 </a>
               </motion.div>
             </div>

@@ -6,23 +6,40 @@ import { SparklesIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { ServiceDrawer } from "../ui/service-drawer";
 import { aiServicesData, AIService } from "./aiServicesData";
-
-// Transform AI services data to match the component structure
-const services = aiServicesData.map(service => ({
-  icon: <span className="text-2xl">{service.icon}</span>,
-  title: service.title,
-  description: service.description,
-  imageUrl: service.imageUrl,
-  size: service.size,
-  tiers: service.tiers,
-  id: service.id
-}));
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Services = () => {
   const containerRef = useRef(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
+  const [selectedService, setSelectedService] = useState<any>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { t } = useLanguage();
+
+  // Helper to map service IDs to translation keys
+  const getTranslationKey = (serviceId: string) => {
+    const idMap: { [key: string]: string } = {
+      "chatbot": "chatbot",
+      "voice-ai": "voiceAi",
+      "automation": "automation",
+      "reviews": "reviews",
+      "analytics": "analytics"
+    };
+    return idMap[serviceId] || serviceId;
+  };
+
+  // Transform AI services data to match the component structure with translations
+  const services = aiServicesData.map(service => {
+    const transKey = getTranslationKey(service.id);
+    return {
+      icon: <span className="text-2xl">{service.icon}</span>,
+      title: t(`aiServices.${transKey}.title`),
+      description: t(`aiServices.${transKey}.description`),
+      imageUrl: service.imageUrl,
+      size: service.size,
+      tiers: service.tiers,
+      id: service.id
+    };
+  });
 
   const isInView = useInView(containerRef, { once: false, margin: "-100px" });
   const { scrollYProgress } = useScroll({
@@ -108,7 +125,7 @@ const Services = () => {
           >
             <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
             <span className="text-xs font-medium tracking-wider text-white/90 uppercase font-questrial">
-              Our Services
+              {t("services.badge")}
             </span>
           </motion.div>
 
@@ -120,10 +137,10 @@ const Services = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <span className="block mb-2 font-light">AI-POWERED</span>
+            <span className="block mb-2 font-light">{t("services.heading1")}</span>
             <span className="block">
-              <span className="font-medium text-[#04a8ae]">Business</span>
-              <span className="font-light"> SOLUTIONS</span>
+              <span className="font-medium text-[#04a8ae]">{t("services.heading2")}</span>
+              <span className="font-light"> {t("services.heading3")}</span>
             </span>
           </motion.h2>
 
@@ -134,7 +151,7 @@ const Services = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Transform your business with intelligent automation, chatbots, voice AI, and advanced analytics
+            {t("services.subtitle")}
           </motion.p>
         </motion.div>
 
@@ -200,7 +217,7 @@ const Services = () => {
                   initial={{ x: -10 }}
                   whileHover={{ x: 0 }}
                 >
-                  <span className="font-questrial">Click to learn more</span>
+                  <span className="font-questrial">{t("services.clickToLearnMore")}</span>
                   <svg 
                     className="ml-2 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
                     fill="none" 
@@ -249,7 +266,7 @@ const Services = () => {
             whileTap={{ scale: 0.95 }}
           >
             <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
-            Get Started
+            {t("services.cta")}
           </motion.a>
         </motion.div>
       </div>

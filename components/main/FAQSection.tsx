@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import AnimatedHeading from "../ui/animated-heading";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FAQItemProps {
   question: string;
@@ -52,35 +53,36 @@ FAQItem.propTypes = {
 };
 
 const FAQSection = () => {
+  const { t } = useLanguage();
+  
   const faqData = [
     {
-      "question": "What services does your digital agency offer?",
-      "answer": "Our digital agency provides a range of services, including web design, digital marketing, SEO, social media management, and other specialized offerings tailored to meet the unique needs of our clients."
+      question: t("faq.q1"),
+      answer: t("faq.a1")
     },
     {
-      "question": "How much does your digital agency charge for its services?",
-      "answer": "The cost of our services varies based on the specific project requirements. We can provide a detailed pricing structure upon discussion, ensuring transparency and aligning with the value and results you can expect from our digital expertise."
+      question: t("faq.q2"),
+      answer: t("faq.a2")
     },
     {
-      "question": "What is the typical timeline for completing a project?",
-      "answer": "The project timeline depends on factors such as complexity, client responsiveness, and other variables. We aim for efficient delivery and will provide you with a clear timeframe based on your project's unique characteristics."
+      question: t("faq.q3"),
+      answer: t("faq.a3")
     },
     {
-      "question": "Can you provide examples of your past work or client success stories?",
-      "answer": "Certainly! We have a portfolio showcasing our best work, and we're happy to share client testimonials and case studies that highlight the successful outcomes of our digital services. This will give you insights into the quality and effectiveness of our work."
+      question: t("faq.q4"),
+      answer: t("faq.a4")
     },
     {
-      "question": "How do you approach communication and collaboration with clients?",
-      "answer": "We prioritize transparent and effective communication throughout the project. Our approach involves regular updates, collaboration with clients to align with their vision, and the use of project management tools to ensure seamless communication. Your involvement is crucial, and we strive to keep you informed and engaged at every stage."
+      question: t("faq.q5"),
+      answer: t("faq.a5")
     }
-    // Add more FAQ items as needed
   ];
 
   return (
     <section id="FAQSection" className="bg-[#202636] py-8">
       <div className="mx-auto max-w-lg text-center">
         <AnimatedHeading as="h2" className="text-[40px] font-semibold py-10">
-          Frequently Asked Questions
+          {t("faq.title")}
         </AnimatedHeading>
       </div>
 

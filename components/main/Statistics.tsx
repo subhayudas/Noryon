@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import AnimatedHeading from "../ui/animated-heading";
 import { slideInFromBottom } from "@/utils/motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CounterProps {
   end: number;
@@ -53,38 +54,39 @@ const Counter: React.FC<CounterProps> = ({ end, duration, suffix = "", prefix = 
 const Statistics = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.2 });
+  const { t } = useLanguage();
   
   const stats = [
     {
       id: 1,
       value: 99,
       suffix: "%",
-      label: "Client Satisfaction",
-      description: "Our clients love the results we deliver",
+      label: t("statistics.stat1"),
+      description: t("statistics.stat1Desc"),
       color: "from-blue-600 to-indigo-600",
     },
     {
       id: 2,
       value: 27,
       suffix: "+",
-      label: "Projects Completed",
-      description: "Successful projects across industries",
+      label: t("statistics.stat2"),
+      description: t("statistics.stat2Desc"),
               color: "from-gray-500 to-gray-600",
     },
     {
       id: 3,
       value: 15,
       suffix: "x",
-      label: "Average ROI",
-      description: "Return on investment for our clients",
+      label: t("statistics.stat3"),
+      description: t("statistics.stat3Desc"),
       color: "from-green-500 to-emerald-500",
     },
     {
       id: 4,
       value: 24,
       suffix: "/7",
-      label: "Support Available",
-      description: "We're always here when you need us",
+      label: t("statistics.stat4"),
+      description: t("statistics.stat4Desc"),
       color: "from-purple-500 to-pink-500",
     },
   ];
@@ -102,11 +104,11 @@ const Statistics = () => {
             className="Welcome-box py-[8px] px-[7px] border border-[#00c8cf8b] opacity-[0.9] text-center mx-auto inline-flex items-center"
           >
             <SparklesIcon className="text-[#00c8cf] mr-[10px] h-5 w-5" />
-            <h1 className="Welcome-text text-[13px]">Our Impact</h1>
+            <h1 className="Welcome-text text-[13px]">{t("statistics.badge")}</h1>
           </motion.div>
           
           <AnimatedHeading as="h2" className="mt-4 text-4xl md:text-5xl font-bold">
-            Driving Results That Matter
+            {t("statistics.heading")}
           </AnimatedHeading>
           
           <motion.p 
@@ -115,7 +117,7 @@ const Statistics = () => {
             animate={isInView ? "visible" : "hidden"}
             className="mt-4 text-lg text-gray-300 max-w-2xl mx-auto"
           >
-            Numbers don't lie. See how our expertise translates into measurable success for our clients.
+            {t("statistics.subtitle")}
           </motion.p>
         </div>
         

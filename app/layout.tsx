@@ -8,6 +8,7 @@ import Footer from "@/components/main/Footer";
 import LoadingAnimation from "@/components/main/LoadingAnimation";
 import VapiChat from "@/components/main/VapiChat";
 import CalendlyPopup from "@/components/main/CalendlyPopup";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -107,12 +108,14 @@ export default function RootLayout({
         className={`${inter.className} bg-[#030014] overflow-y-scroll overflow-x-hidden`}
         style={{ cursor: 'auto' }}
       >
+        <LanguageProvider>
         <LoadingAnimation />
         <Navbar />
         {children}
         <Footer />
         <VapiChat />
         <CalendlyPopup />
+        </LanguageProvider>
       </body>
     </html>
   );

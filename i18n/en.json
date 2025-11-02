@@ -1,0 +1,481 @@
+{
+  "navbar": {
+    "navigate": "Navigate",
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "projects": "Projects",
+    "team": "Team",
+    "process": "Process",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "bookCall": "Book a Call",
+    "textUs": "Text Us"
+  },
+  "hero": {
+    "badge": "NORYON.AI",
+    "heading1": "INTELLIGENT",
+    "heading2": "AI-Powered",
+    "heading3": "SOLUTIONS",
+    "bookCall": "Book A Call"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "close": "Close",
+    "next": "Next",
+    "previous": "Previous",
+    "readMore": "Read More",
+    "learnMore": "Learn More"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about our company",
+    "heading1": "We Are AI Agents & Automation Agency From South Asia",
+    "heading2": "Professional AI Agents & Automation Agency to provide intelligent solutions",
+    "paragraph1": "Welcome to Noryon, where artificial intelligence meets business automation. As an AI Agents & Automation Agency, we specialize in creating intelligent solutions that transform how businesses operate and interact with their customers.",
+    "paragraph2": "Our expertise in AI technology, machine learning, and automation ensures your business not only stays competitive but leads in the digital age. At Noryon, we don't just implement AI solutions; we create intelligent systems that learn, adapt, and grow with your business needs.",
+    "paragraph3": "Join us on a journey where your business operations become seamlessly automated, your customer interactions become more intelligent, and your growth becomes unstoppable. Welcome to Noryon, where AI meets ambition.",
+    "feature1": "AI-Powered Solutions",
+    "feature2": "Intelligent Automation",
+    "feature3": "Chatbots & Voice AI",
+    "projectsCount": "230+",
+    "bookCall": "Book A Call"
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "What we offer",
+    "badge": "Our Services",
+    "heading1": "AI-POWERED",
+    "heading2": "Business",
+    "heading3": "SOLUTIONS",
+    "subtitle": "Transform your business with intelligent automation, chatbots, voice AI, and advanced analytics",
+    "cta": "Get Started",
+    "clickToLearnMore": "Click to learn more"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Our work"
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Featured projects",
+    "viewAll": "View All",
+    "loadMore": "Load More"
+  },
+  "team": {
+    "title": "Our Team",
+    "description": "Meet the people behind Noryon"
+  },
+  "process": {
+    "title": "Our Process",
+    "description": "How we work",
+    "badge": "Our Process",
+    "heading": "How We Deliver Excellence",
+    "subtitle": "Our proven six-step process ensures consistent, high-quality results for every project.",
+    "step1": {
+      "title": "Discovery",
+      "description": "We start by understanding your business goals, target audience, and current digital presence to create a tailored strategy.",
+      "card1Title": "Research & Analysis",
+      "card1Desc": "Comprehensive analysis of your market position and digital footprint",
+      "card2Title": "Audience Mapping",
+      "card2Desc": "Identifying your ideal customers and their digital behaviors"
+    },
+    "step2": {
+      "title": "Strategy",
+      "description": "Our team develops a comprehensive digital strategy aligned with your business objectives and market opportunities.",
+      "card1Title": "Strategic Planning",
+      "card1Desc": "Developing actionable roadmaps for digital transformation",
+      "card2Title": "Goal Setting",
+      "card2Desc": "Establishing measurable objectives and KPIs for your digital presence"
+    },
+    "step3": {
+      "title": "Design",
+      "description": "We create stunning visuals and user experiences that captivate your audience and strengthen your brand identity.",
+      "card1Title": "Visual Design",
+      "card1Desc": "Creating compelling visuals that align with your brand identity",
+      "card2Title": "UX/UI Design",
+      "card2Desc": "Designing intuitive user interfaces for optimal user experience"
+    },
+    "step4": {
+      "title": "Development",
+      "description": "Our developers bring designs to life with clean, efficient code that ensures optimal performance across all devices.",
+      "card1Title": "Frontend Development",
+      "card1Desc": "Building responsive, interactive user interfaces with modern technologies",
+      "card2Title": "Backend Development",
+      "card2Desc": "Creating robust server-side solutions for seamless functionality"
+    },
+    "step5": {
+      "title": "Launch",
+      "description": "We meticulously test and deploy your digital assets, ensuring a smooth and successful launch.",
+      "card1Title": "Testing & QA",
+      "card1Desc": "Comprehensive testing across devices and platforms to ensure flawless performance",
+      "card2Title": "Deployment",
+      "card2Desc": "Smooth deployment with minimal downtime and maximum impact"
+    },
+    "step6": {
+      "title": "Growth",
+      "description": "Post-launch, we continuously optimize your digital presence to drive sustained growth and maximize ROI.",
+      "card1Title": "Analytics & Optimization",
+      "card1Desc": "Data-driven improvements based on user behavior and performance metrics",
+      "card2Title": "Continuous Improvement",
+      "card2Desc": "Ongoing updates and enhancements to keep your digital presence ahead of the curve"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "description": "Common questions and answers",
+    "q1": "What services does your digital agency offer?",
+    "a1": "Our digital agency provides a range of services, including web design, digital marketing, SEO, social media management, and other specialized offerings tailored to meet the unique needs of our clients.",
+    "q2": "How much does your digital agency charge for its services?",
+    "a2": "The cost of our services varies based on the specific project requirements. We can provide a detailed pricing structure upon discussion, ensuring transparency and aligning with the value and results you can expect from our digital expertise.",
+    "q3": "What is the typical timeline for completing a project?",
+    "a3": "The project timeline depends on factors such as complexity, client responsiveness, and other variables. We aim for efficient delivery and will provide you with a clear timeframe based on your project's unique characteristics.",
+    "q4": "Can you provide examples of your past work or client success stories?",
+    "a4": "Certainly! We have a portfolio showcasing our best work, and we're happy to share client testimonials and case studies that highlight the successful outcomes of our digital services. This will give you insights into the quality and effectiveness of our work.",
+    "q5": "How do you approach communication and collaboration with clients?",
+    "a5": "We prioritize transparent and effective communication throughout the project. Our approach involves regular updates, collaboration with clients to align with their vision, and the use of project management tools to ensure seamless communication. Your involvement is crucial, and we strive to keep you informed and engaged at every stage."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "heading": "Ready to Transform Your Business with AI?",
+    "subtitle": "Get in touch to discuss how our AI solutions can automate your business processes and boost efficiency.",
+    "phone": "Phone Number",
+    "businessInfo": "Tell us about your business and AI needs",
+    "placeholderName": "Your Name",
+    "placeholderEmail": "your@gmail.com",
+    "placeholderPhone": "+1 (555) 1234-567",
+    "placeholderMessage": "Describe your business, current challenges, and how AI automation could help...",
+    "buttonText": "Get AI Solutions Quote"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "company": "Company",
+    "legal": "Legal",
+    "followUs": "Follow Us",
+    "contactUs": "Contact Us",
+    "allRightsReserved": "All rights reserved",
+    "navigation": "Navigation",
+    "home": "Home",
+    "process": "Process",
+    "ourTeam": "Our Team",
+    "ourServices": "Our Services",
+    "aiChatbots": "AI Chatbots",
+    "voiceAi": "Voice AI",
+    "businessAutomation": "Business Automation",
+    "reviewManagement": "Review Management",
+    "aiAnalytics": "AI Analytics",
+    "tagline": "Transforming businesses with AI-powered automation, intelligent chatbots, and smart solutions that drive growth and efficiency.",
+    "newsletterTitle": "Stay Connected",
+    "newsletterDesc": "Get exclusive updates, insights, and special offers directly to your inbox.",
+    "emailPlaceholder": "Your email address",
+    "subscribe": "Subscribe",
+    "bookConsultation": "Book a Consultation",
+    "rights": "© {year} Noryon. All rights reserved.",
+    "location": "Montreal, Canada"
+  },
+  "booking": {
+    "badge": "Book Your Consultation",
+    "heading": "Let's Work Together",
+    "subtitle": "Fill out the form below to book a consultation with our team. We'll get back to you within 24 hours.",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "service": "Service Interested In",
+    "message": "Your Message",
+    "selectService": "Select a service",
+    "placeholderName": "John Doe",
+    "placeholderEmail": "john@example.com",
+    "placeholderPhone": "+1 (123) 456-7890",
+    "placeholderMessage": "Tell us about your project or requirements...",
+    "submitting": "Submitting...",
+    "buttonText": "Book Your Consultation",
+    "textUs": "Text Us",
+    "privacyText": "By submitting this form, you agree to our",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "and": "and",
+    "successMessage": "Thank you! Your booking request has been submitted successfully.",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "webDev": "Web Development",
+    "contentMarketing": "Content Marketing",
+    "seo": "SEO Optimization",
+    "graphicDesign": "Graphic Design",
+    "socialMedia": "Social Media Marketing",
+    "other": "Other"
+  },
+  "cta": {
+    "badge": "Ready to Transform?",
+    "heading1": "LET'S BUILD",
+    "heading2": "Something",
+    "heading3": "EXTRAORDINARY",
+    "description": "Ready to elevate your digital presence? Join the ranks of successful businesses who have transformed their growth trajectory with our innovative solutions.",
+    "primaryButton": "Book Your Free Strategy Call",
+    "secondaryButton": "View Our Portfolio",
+    "trustedBy": "Trusted by startups and enterprises worldwide",
+    "enterpriseGrade": "Enterprise Grade",
+    "support247": "24/7 Support",
+    "provenResults": "Proven Results",
+    "stat1": "Average ROI",
+    "stat2": "Projects Delivered",
+    "stat3": "Support Available",
+    "stat4": "Client Satisfaction"
+  },
+  "statistics": {
+    "badge": "Our Achievements",
+    "heading": "Numbers That Speak",
+    "subtitle": "See how we've helped businesses achieve remarkable growth and success.",
+    "stat1": "Client Satisfaction",
+    "stat1Desc": "Our clients love the results we deliver",
+    "stat2": "Projects Completed",
+    "stat2Desc": "Successful projects across industries",
+    "stat3": "Average ROI",
+    "stat3Desc": "Return on investment for our clients",
+    "stat4": "Support Available",
+    "stat4Desc": "We're always here when you need us"
+  },
+  "containerScroll": {
+    "heading": "We reduce your Expenses"
+  },
+  "terminal": {
+    "badge": "Modern Solutions",
+    "description": "We leverage the latest technologies to deliver exceptional digital experiences for your business.",
+    "welcome": "$ Welcome to Noryon Digital Solutions",
+    "ready": "$ Ready to get started? Contact us today!",
+    "message1": "We specialize in creating stunning websites and digital experiences",
+    "message2": "Our services include web design, SEO, social media marketing, and more",
+    "message3": "Let's transform your digital presence together!",
+    "message4": "We use cutting-edge technologies to build responsive websites",
+    "message5": "Our team of experts is dedicated to your success",
+    "message6": "We deliver custom solutions tailored to your business needs",
+    "message7": "Boost your online visibility with our SEO strategies",
+    "message8": "Engage your audience with compelling content marketing",
+    "message9": "Drive conversions with optimized user experiences",
+    "message10": "Stay ahead of the competition with innovative digital solutions",
+    "message11": "We help businesses of all sizes achieve their online goals",
+    "message12": "Our data-driven approach ensures measurable results",
+    "message13": "Transform your ideas into reality with our development expertise",
+    "message14": "Create memorable brand experiences that resonate with your audience",
+    "message15": "Scale your business with our growth-focused strategies"
+  },
+  "team": {
+    "leadership": "Our Leadership",
+    "meetFounder": "Meet Our Founder",
+    "expertise": "Expertise",
+    "connect": "Connect"
+  },
+  "serviceDrawer": {
+    "whatsIncluded": "What's Included",
+    "getStartedWith": "Get Started with"
+  },
+  "aiServices": {
+    "chatbot": {
+      "title": "Chatbot Services",
+      "description": "AI-powered conversational agents that engage customers 24/7",
+      "basic": {
+        "name": "Basic",
+        "description": "A simple AI assistant that answers FAQs and captures leads automatically.",
+        "features": [
+          "Instant answers for hours, pricing, services",
+          "Lead capture to inbox or CRM",
+          "Guides to booking/forms",
+          "24/7 coverage; hands-off"
+        ]
+      },
+      "smart": {
+        "name": "Smart",
+        "description": "Advanced conversational AI with context awareness and multi-channel support.",
+        "features": [
+          "Context-aware conversations",
+          "Multi-language support",
+          "Integration with CRM systems",
+          "Advanced analytics and insights"
+        ]
+      },
+      "fullAI": {
+        "name": "Full AI",
+        "description": "Complete AI solution with machine learning and predictive capabilities.",
+        "features": [
+          "Machine learning optimization",
+          "Predictive customer insights",
+          "Custom AI model training",
+          "Advanced automation workflows"
+        ]
+      }
+    },
+    "voiceAi": {
+      "title": "Voice AI Services",
+      "description": "Professional voice agents that handle calls and capture leads intelligently",
+      "basic": {
+        "name": "Basic",
+        "description": "A professional voice that answers every call and captures leads.",
+        "features": [
+          "Instant answers for common questions",
+          "Sends caller details to inbox/CRM",
+          "Smart transfers so callers reach the right person",
+          "After-hours coverage + voicemail"
+        ]
+      },
+      "smart": {
+        "name": "Smart",
+        "description": "Intelligent voice AI with natural conversation flow and sentiment analysis.",
+        "features": [
+          "Natural conversation flow",
+          "Sentiment analysis",
+          "Call routing optimization",
+          "Real-time transcription"
+        ]
+      },
+      "fullAI": {
+        "name": "Full AI",
+        "description": "Advanced voice AI with emotional intelligence and predictive calling.",
+        "features": [
+          "Emotional intelligence",
+          "Predictive call outcomes",
+          "Custom voice training",
+          "Advanced call analytics"
+        ]
+      }
+    },
+    "automation": {
+      "title": "Automation Services",
+      "description": "Intelligent workflows that save time and streamline business processes",
+      "basic": {
+        "name": "Basic",
+        "description": "Save time on repetitive tasks and keep workflows running.",
+        "features": [
+          "Automates forms, reminders, notifications",
+          "Connects Sheets, email, calendar",
+          "Auto-stores and organizes leads",
+          "Runs 24/7 in the background"
+        ]
+      },
+      "smart": {
+        "name": "Smart",
+        "description": "Advanced automation with conditional logic and multi-platform integration.",
+        "features": [
+          "Conditional workflow logic",
+          "Multi-platform integration",
+          "Error handling and recovery",
+          "Performance monitoring"
+        ]
+      },
+      "fullAI": {
+        "name": "Full AI",
+        "description": "AI-driven automation that learns and optimizes processes automatically.",
+        "features": [
+          "Self-optimizing workflows",
+          "Predictive automation",
+          "Custom AI model integration",
+          "Advanced process mining"
+        ]
+      }
+    },
+    "reviews": {
+      "title": "Review & Reputation",
+      "description": "Automated systems to collect and manage customer feedback and reviews",
+      "basic": {
+        "name": "Basic",
+        "description": "Collect more positive reviews with minimal effort.",
+        "features": [
+          "Automated SMS/email requests",
+          "Direct to Google & Facebook",
+          "Simple request tracking",
+          "Follow-ups until feedback is left"
+        ]
+      },
+      "smart": {
+        "name": "Smart",
+        "description": "Intelligent review management with sentiment analysis and response automation.",
+        "features": [
+          "Sentiment analysis",
+          "Automated response generation",
+          "Review trend analysis",
+          "Competitor monitoring"
+        ]
+      },
+      "fullAI": {
+        "name": "Full AI",
+        "description": "Complete reputation management with AI-powered insights and optimization.",
+        "features": [
+          "AI-powered reputation scoring",
+          "Predictive review trends",
+          "Automated reputation recovery",
+          "Advanced analytics dashboard"
+        ]
+      }
+    },
+    "analytics": {
+      "title": "Analytics & Reporting",
+      "description": "AI-powered insights and automated reporting for data-driven decisions",
+      "basic": {
+        "name": "Basic",
+        "description": "Simple KPIs always available without spreadsheets.",
+        "features": [
+          "Daily/weekly lead & sales reports",
+          "Top KPIs in a clean dashboard",
+          "Summary reports via email/SMS",
+          "24/7 data tracking"
+        ]
+      },
+      "smart": {
+        "name": "Smart",
+        "description": "Advanced analytics with predictive insights and automated recommendations.",
+        "features": [
+          "Predictive analytics",
+          "Automated recommendations",
+          "Custom dashboard creation",
+          "Real-time alerts"
+        ]
+      },
+      "fullAI": {
+        "name": "Full AI",
+        "description": "Complete AI analytics platform with machine learning and automated insights.",
+        "features": [
+          "Machine learning models",
+          "Automated insight generation",
+          "Custom AI predictions",
+          "Advanced data visualization"
+        ]
+      }
+    }
+  },
+  "contentMarketing": {
+    "chatbots": {
+      "title": "Intelligent Chatbots",
+      "description": "Deploy AI-powered chatbots that provide instant customer support, capture leads, and guide users through your sales funnel 24/7. Our advanced conversational AI understands context and delivers personalized experiences."
+    },
+    "voiceAi": {
+      "title": "Voice AI Solutions",
+      "description": "Transform your phone system with professional voice agents that handle calls intelligently, capture leads, and provide seamless customer experiences. Never miss another opportunity with our smart call routing."
+    },
+    "automation": {
+      "title": "Business Automation",
+      "description": "Streamline your operations with intelligent automation that handles repetitive tasks, connects your systems, and keeps your workflows running smoothly. Save time and reduce errors with our smart automation solutions."
+    },
+    "reviews": {
+      "title": "Review Management",
+      "description": "Automatically collect and manage customer reviews with our intelligent reputation management system. Boost your online presence and build trust with automated review requests and smart response management."
+    },
+    "analytics": {
+      "title": "AI Analytics & Insights",
+      "description": "Get actionable insights from your data with our AI-powered analytics platform. Track performance, predict trends, and make data-driven decisions with automated reporting and intelligent recommendations."
+    }
+  },
+  "imageTrail": {
+    "badge": "Creative Showcase (MOVE YOUR CURSOR)",
+    "heading1": "EXPLORE",
+    "heading2": "Visual",
+    "heading3": "EXCELLENCE"
+  }
+}
+

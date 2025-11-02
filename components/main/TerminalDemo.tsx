@@ -3,25 +3,28 @@
 import React, { useState, useEffect } from "react";
 import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/magicui/terminal";
 import { SparklesIcon } from "@heroicons/react/24/solid";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const TerminalDemo = () => {
+  const { t } = useLanguage();
+  
   // Array of messages to display in the terminal
   const messages = [
-    "We specialize in creating stunning websites and digital experiences",
-    "Our services include web design, SEO, social media marketing, and more",
-    "Let's transform your digital presence together!",
-    "We use cutting-edge technologies to build responsive websites",
-    "Our team of experts is dedicated to your success",
-    "We deliver custom solutions tailored to your business needs",
-    "Boost your online visibility with our SEO strategies",
-    "Engage your audience with compelling content marketing",
-    "Drive conversions with optimized user experiences",
-    "Stay ahead of the competition with innovative digital solutions",
-    "We help businesses of all sizes achieve their online goals",
-    "Our data-driven approach ensures measurable results",
-    "Transform your ideas into reality with our development expertise",
-    "Create memorable brand experiences that resonate with your audience",
-    "Scale your business with our growth-focused strategies"
+    t("terminal.message1"),
+    t("terminal.message2"),
+    t("terminal.message3"),
+    t("terminal.message4"),
+    t("terminal.message5"),
+    t("terminal.message6"),
+    t("terminal.message7"),
+    t("terminal.message8"),
+    t("terminal.message9"),
+    t("terminal.message10"),
+    t("terminal.message11"),
+    t("terminal.message12"),
+    t("terminal.message13"),
+    t("terminal.message14"),
+    t("terminal.message15")
   ];
 
   // State to track the current message being displayed
@@ -75,13 +78,13 @@ const TerminalDemo = () => {
         <div className="Welcome-box py-[6px] px-[5px] sm:py-[8px] sm:px-[7px] border border-[#7042f88b] opacity-[0.9] text-center mx-auto inline-flex items-center">
           <SparklesIcon className="text-[#b49bff] mr-[6px] sm:mr-[10px] h-4 w-4 sm:h-5 sm:w-5" />
           <h1 className="Welcome-text text-[10px] xs:text-[11px] sm:text-xs">
-            Modern Solutions
+            {t("terminal.badge")}
           </h1>
         </div>
        
       </div>
       <p className="mt-2 sm:mt-4 text-base sm:text-lg font-normal text-neutral-300 max-w-lg text-center mx-auto mb-6 sm:mb-10">
-        We leverage the latest technologies to deliver exceptional digital experiences for your business.
+        {t("terminal.description")}
       </p>
       
       <div className="flex justify-center">
@@ -90,7 +93,7 @@ const TerminalDemo = () => {
           {/* Terminal wrapper with fixed height that adjusts on smaller screens */}
           <div className="h-[200px] sm:h-[240px] md:h-[280px] flex flex-col">
             <AnimatedSpan delay={500} className="text-green-400 text-xs sm:text-sm md:text-base">
-              $ Welcome to Noryon Digital Solutions
+              {t("terminal.welcome")}
             </AnimatedSpan>
             
             {/* Fixed size content area */}
@@ -124,7 +127,7 @@ const TerminalDemo = () => {
             </div>
             
             <AnimatedSpan delay={0} className="text-yellow-400 mt-auto text-xs sm:text-sm md:text-base">
-              $ Ready to get started? Contact us today!
+              {t("terminal.ready")}
             </AnimatedSpan>
           </div>
         </Terminal>

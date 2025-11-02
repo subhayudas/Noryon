@@ -1,0 +1,480 @@
+{
+  "navbar": {
+    "navigate": "Navigation",
+    "home": "Accueil",
+    "about": "À propos",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "projects": "Projets",
+    "team": "Équipe",
+    "process": "Processus",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "bookCall": "Réserver un appel",
+    "textUs": "Nous écrire"
+  },
+  "hero": {
+    "badge": "NORYON.AI",
+    "heading1": "INTELLIGENTES",
+    "heading2": "Solutions",
+    "heading3": "ALIMENTÉES PAR L'IA",
+    "bookCall": "Réserver un appel"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur s'est produite",
+    "submit": "Soumettre",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "readMore": "Lire la suite",
+    "learnMore": "En savoir plus"
+  },
+  "about": {
+    "title": "À propos de nous",
+    "description": "En savoir plus sur notre entreprise",
+    "heading1": "Nous Sommes une Agence d'Agents IA et d'Automatisation d'Asie du Sud",
+    "heading2": "Agence Professionnelle d'Agents IA et d'Automatisation pour fournir des solutions intelligentes",
+    "paragraph1": "Bienvenue chez Noryon, où l'intelligence artificielle rencontre l'automatisation des entreprises. En tant qu'agence d'agents IA et d'automatisation, nous nous spécialisons dans la création de solutions intelligentes qui transforment la façon dont les entreprises fonctionnent et interagissent avec leurs clients.",
+    "paragraph2": "Notre expertise en technologie IA, apprentissage automatique et automatisation garantit que votre entreprise non seulement reste compétitive mais prend les devants à l'ère numérique. Chez Noryon, nous ne nous contentons pas d'implémenter des solutions IA ; nous créons des systèmes intelligents qui apprennent, s'adaptent et évoluent avec les besoins de votre entreprise.",
+    "paragraph3": "Rejoignez-nous dans un voyage où vos opérations commerciales deviennent parfaitement automatisées, vos interactions clients deviennent plus intelligentes et votre croissance devient imparable. Bienvenue chez Noryon, où l'IA rencontre l'ambition.",
+    "feature1": "Solutions Alimentées par l'IA",
+    "feature2": "Automatisation Intelligente",
+    "feature3": "Chatbots et IA Vocale",
+    "projectsCount": "230+",
+    "bookCall": "Réserver un appel"
+  },
+  "services": {
+    "title": "Nos services",
+    "description": "Ce que nous offrons",
+    "badge": "Nos Services",
+    "heading1": "ALIMENTÉES PAR L'IA",
+    "heading2": "Solutions",
+    "heading3": "POUR ENTREPRISES",
+    "subtitle": "Transformez votre entreprise avec l'automatisation intelligente, les chatbots, l'IA vocale et les analyses avancées",
+    "cta": "Commencer",
+    "clickToLearnMore": "Cliquez pour en savoir plus"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Notre travail"
+  },
+  "projects": {
+    "title": "Projets",
+    "description": "Projets en vedette",
+    "viewAll": "Voir tout",
+    "loadMore": "Charger plus"
+  },
+  "team": {
+    "title": "Notre équipe",
+    "description": "Rencontrez les personnes derrière Noryon"
+  },
+  "process": {
+    "title": "Notre processus",
+    "description": "Comment nous travaillons",
+    "badge": "Notre Processus",
+    "heading": "Comment Nous Réalisons l'Excellence",
+    "subtitle": "Notre processus en six étapes éprouvé garantit des résultats cohérents et de haute qualité pour chaque projet.",
+    "step1": {
+      "title": "Découverte",
+      "description": "Nous commençons par comprendre vos objectifs commerciaux, votre public cible et votre présence numérique actuelle pour créer une stratégie sur mesure.",
+      "card1Title": "Recherche et Analyse",
+      "card1Desc": "Analyse complète de votre position sur le marché et de votre empreinte numérique",
+      "card2Title": "Cartographie de l'Audience",
+      "card2Desc": "Identification de vos clients idéaux et de leurs comportements numériques"
+    },
+    "step2": {
+      "title": "Stratégie",
+      "description": "Notre équipe développe une stratégie numérique complète alignée sur vos objectifs commerciaux et les opportunités du marché.",
+      "card1Title": "Planification Stratégique",
+      "card1Desc": "Développement de feuilles de route actionnables pour la transformation numérique",
+      "card2Title": "Fixation d'Objectifs",
+      "card2Desc": "Établissement d'objectifs mesurables et de KPI pour votre présence numérique"
+    },
+    "step3": {
+      "title": "Design",
+      "description": "Nous créons des visuels et des expériences utilisateur époustouflants qui captivent votre audience et renforcent l'identité de votre marque.",
+      "card1Title": "Design Visuel",
+      "card1Desc": "Création de visuels convaincants qui s'alignent sur l'identité de votre marque",
+      "card2Title": "Design UX/UI",
+      "card2Desc": "Conception d'interfaces utilisateur intuitives pour une expérience utilisateur optimale"
+    },
+    "step4": {
+      "title": "Développement",
+      "description": "Nos développeurs donnent vie aux designs avec un code propre et efficace qui garantit des performances optimales sur tous les appareils.",
+      "card1Title": "Développement Frontend",
+      "card1Desc": "Construction d'interfaces utilisateur réactives et interactives avec des technologies modernes",
+      "card2Title": "Développement Backend",
+      "card2Desc": "Création de solutions côté serveur robustes pour une fonctionnalité fluide"
+    },
+    "step5": {
+      "title": "Lancement",
+      "description": "Nous testons et déployons méticuleusement vos actifs numériques, garantissant un lancement fluide et réussi.",
+      "card1Title": "Tests et QA",
+      "card1Desc": "Tests complets sur tous les appareils et plates-formes pour garantir des performances parfaites",
+      "card2Title": "Déploiement",
+      "card2Desc": "Déploiement fluide avec un minimum de temps d'arrêt et un impact maximal"
+    },
+    "step6": {
+      "title": "Croissance",
+      "description": "Après le lancement, nous optimisons continuellement votre présence numérique pour stimuler une croissance soutenue et maximiser le ROI.",
+      "card1Title": "Analyses et Optimisation",
+      "card1Desc": "Améliorations basées sur les données basées sur le comportement des utilisateurs et les métriques de performance",
+      "card2Title": "Amélioration Continue",
+      "card2Desc": "Mises à jour et améliorations continues pour maintenir votre présence numérique en avance sur la courbe"
+    }
+  },
+  "faq": {
+    "title": "Questions fréquemment posées",
+    "description": "Questions et réponses courantes",
+    "q1": "Quels services votre agence numérique propose-t-elle ?",
+    "a1": "Notre agence numérique propose une gamme de services, notamment la conception web, le marketing numérique, le SEO, la gestion des réseaux sociaux et d'autres offres spécialisées adaptées aux besoins uniques de nos clients.",
+    "q2": "Combien votre agence numérique facture-t-elle pour ses services ?",
+    "a2": "Le coût de nos services varie en fonction des exigences spécifiques du projet. Nous pouvons fournir une structure de tarification détaillée lors de la discussion, garantissant la transparence et l'alignement avec la valeur et les résultats que vous pouvez attendre de notre expertise numérique.",
+    "q3": "Quel est le délai typique pour terminer un projet ?",
+    "a3": "Le calendrier du projet dépend de facteurs tels que la complexité, la réactivité du client et d'autres variables. Nous visons une livraison efficace et vous fournirons un calendrier clair basé sur les caractéristiques uniques de votre projet.",
+    "q4": "Pouvez-vous fournir des exemples de votre travail passé ou des histoires de succès clients ?",
+    "a4": "Bien sûr ! Nous avons un portfolio présentant nos meilleurs travaux, et nous sommes heureux de partager des témoignages clients et des études de cas qui mettent en évidence les résultats réussis de nos services numériques. Cela vous donnera des informations sur la qualité et l'efficacité de notre travail.",
+    "q5": "Comment abordez-vous la communication et la collaboration avec les clients ?",
+    "a5": "Nous privilégions une communication transparente et efficace tout au long du projet. Notre approche implique des mises à jour régulières, une collaboration avec les clients pour s'aligner sur leur vision et l'utilisation d'outils de gestion de projet pour assurer une communication fluide. Votre implication est cruciale, et nous nous efforçons de vous tenir informé et engagé à chaque étape."
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "description": "Entrer en contact",
+    "name": "Nom",
+    "email": "Courriel",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "heading": "Prêt à Transformer Votre Entreprise avec l'IA ?",
+    "subtitle": "Contactez-nous pour discuter de la façon dont nos solutions IA peuvent automatiser vos processus commerciaux et améliorer l'efficacité.",
+    "phone": "Numéro de téléphone",
+    "businessInfo": "Parlez-nous de votre entreprise et de vos besoins en IA",
+    "placeholderName": "Votre nom",
+    "placeholderEmail": "votre@gmail.com",
+    "placeholderPhone": "+1 (555) 1234-567",
+    "placeholderMessage": "Décrivez votre entreprise, les défis actuels et comment l'automatisation IA pourrait aider...",
+    "buttonText": "Obtenir un Devis pour Solutions IA"
+  },
+  "footer": {
+    "quickLinks": "Liens rapides",
+    "services": "Services",
+    "company": "Entreprise",
+    "legal": "Légal",
+    "followUs": "Suivez-nous",
+    "contactUs": "Nous contacter",
+    "allRightsReserved": "Tous droits réservés",
+    "navigation": "Navigation",
+    "home": "Accueil",
+    "process": "Processus",
+    "ourTeam": "Notre Équipe",
+    "ourServices": "Nos Services",
+    "aiChatbots": "Chatbots IA",
+    "voiceAi": "IA Vocale",
+    "businessAutomation": "Automatisation d'Entreprise",
+    "reviewManagement": "Gestion des Avis",
+    "aiAnalytics": "Analyses IA",
+    "tagline": "Transformer les entreprises avec l'automatisation alimentée par l'IA, les chatbots intelligents et les solutions intelligentes qui stimulent la croissance et l'efficacité.",
+    "newsletterTitle": "Restez Connecté",
+    "newsletterDesc": "Recevez des mises à jour exclusives, des informations et des offres spéciales directement dans votre boîte de réception.",
+    "emailPlaceholder": "Votre adresse e-mail",
+    "subscribe": "S'abonner",
+    "bookConsultation": "Réserver une Consultation",
+    "rights": "© {year} Noryon. Tous droits réservés.",
+    "location": "Montréal, Canada"
+  },
+  "booking": {
+    "badge": "Réserver Votre Consultation",
+    "heading": "Travaillons Ensemble",
+    "subtitle": "Remplissez le formulaire ci-dessous pour réserver une consultation avec notre équipe. Nous vous répondrons dans les 24 heures.",
+    "name": "Nom complet",
+    "email": "Adresse e-mail",
+    "phone": "Numéro de téléphone",
+    "service": "Service d'intérêt",
+    "message": "Votre Message",
+    "selectService": "Sélectionner un service",
+    "placeholderName": "Jean Dupont",
+    "placeholderEmail": "jean@exemple.com",
+    "placeholderPhone": "+1 (123) 456-7890",
+    "placeholderMessage": "Parlez-nous de votre projet ou de vos besoins...",
+    "submitting": "Envoi...",
+    "buttonText": "Réserver Votre Consultation",
+    "textUs": "Nous écrire",
+    "privacyText": "En soumettant ce formulaire, vous acceptez notre",
+    "privacyPolicy": "Politique de Confidentialité",
+    "termsOfService": "Conditions de Service",
+    "and": "et",
+    "successMessage": "Merci ! Votre demande de réservation a été soumise avec succès.",
+    "errorMessage": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    "webDev": "Développement Web",
+    "contentMarketing": "Marketing de Contenu",
+    "seo": "Optimisation SEO",
+    "graphicDesign": "Conception Graphique",
+    "socialMedia": "Marketing sur les Réseaux Sociaux",
+    "other": "Autre"
+  },
+  "cta": {
+    "badge": "Prêt à Transformer ?",
+    "heading1": "CONSTRUISONS",
+    "heading2": "Quelque chose",
+    "heading3": "D'EXTRAORDINAIRE",
+    "description": "Prêt à élever votre présence numérique ? Rejoignez les rangs des entreprises prospères qui ont transformé leur trajectoire de croissance avec nos solutions innovantes.",
+    "primaryButton": "Réserver Votre Appel Stratégique Gratuit",
+    "secondaryButton": "Voir Notre Portfolio",
+    "trustedBy": "Fait confiance par les startups et entreprises du monde entier",
+    "enterpriseGrade": "Qualité Entreprise",
+    "support247": "Support 24/7",
+    "provenResults": "Résultats Prouvés",
+    "stat1": "ROI Moyen",
+    "stat2": "Projets Livrés",
+    "stat3": "Support Disponible",
+    "stat4": "Satisfaction Client"
+  },
+  "statistics": {
+    "badge": "Nos Réalisations",
+    "heading": "Des Chiffres Qui Parlent",
+    "subtitle": "Découvrez comment nous avons aidé les entreprises à atteindre une croissance et un succès remarquables.",
+    "stat1": "Satisfaction Client",
+    "stat1Desc": "Nos clients adorent les résultats que nous livrons",
+    "stat2": "Projets Terminés",
+    "stat2Desc": "Projets réussis dans tous les secteurs",
+    "stat3": "ROI Moyen",
+    "stat3Desc": "Retour sur investissement pour nos clients",
+    "stat4": "Support Disponible",
+    "stat4Desc": "Nous sommes toujours là quand vous avez besoin de nous"
+  },
+  "containerScroll": {
+    "heading": "Nous réduisons vos Dépenses"
+  },
+  "terminal": {
+    "badge": "Solutions Modernes",
+    "description": "Nous utilisons les dernières technologies pour offrir des expériences numériques exceptionnelles à votre entreprise.",
+    "welcome": "$ Bienvenue chez Noryon Digital Solutions",
+    "ready": "$ Prêt à commencer ? Contactez-nous dès aujourd'hui !",
+    "message1": "Nous nous spécialisons dans la création de sites web et d'expériences numériques époustouflantes",
+    "message2": "Nos services comprennent la conception web, le SEO, le marketing sur les réseaux sociaux, et plus encore",
+    "message3": "Transformons ensemble votre présence numérique !",
+    "message4": "Nous utilisons des technologies de pointe pour construire des sites web réactifs",
+    "message5": "Notre équipe d'experts est dédiée à votre succès",
+    "message6": "Nous offrons des solutions sur mesure adaptées aux besoins de votre entreprise",
+    "message7": "Renforcez votre visibilité en ligne avec nos stratégies SEO",
+    "message8": "Engagez votre audience avec un marketing de contenu convaincant",
+    "message9": "Augmentez les conversions avec des expériences utilisateur optimisées",
+    "message10": "Restez devant la concurrence avec des solutions numériques innovantes",
+    "message11": "Nous aidons les entreprises de toutes tailles à atteindre leurs objectifs en ligne",
+    "message12": "Notre approche basée sur les données garantit des résultats mesurables",
+    "message13": "Transformez vos idées en réalité avec notre expertise en développement",
+    "message14": "Créez des expériences de marque mémorables qui résonnent avec votre audience",
+    "message15": "Développez votre entreprise avec nos stratégies axées sur la croissance"
+  },
+  "team": {
+    "leadership": "Notre Direction",
+    "meetFounder": "Rencontrez Notre Fondateur",
+    "expertise": "Expertise",
+    "connect": "Se Connecter"
+  },
+  "serviceDrawer": {
+    "whatsIncluded": "Ce Qui Est Inclus",
+    "getStartedWith": "Commencer avec"
+  },
+  "aiServices": {
+    "chatbot": {
+      "title": "Services de Chatbot",
+      "description": "Agents conversationnels alimentés par l'IA qui engagent les clients 24/7",
+      "basic": {
+        "name": "Basique",
+        "description": "Un assistant IA simple qui répond aux FAQ et capture les prospects automatiquement.",
+        "features": [
+          "Réponses instantanées sur les heures, prix, services",
+          "Capture de prospects vers la boîte de réception ou CRM",
+          "Guidance vers réservation/formulaires",
+          "Couverture 24/7 ; sans intervention"
+        ]
+      },
+      "smart": {
+        "name": "Intelligent",
+        "description": "IA conversationnelle avancée avec conscience contextuelle et support multi-canaux.",
+        "features": [
+          "Conversations conscientes du contexte",
+          "Support multilingue",
+          "Intégration avec systèmes CRM",
+          "Analyses et insights avancés"
+        ]
+      },
+      "fullAI": {
+        "name": "IA Complète",
+        "description": "Solution IA complète avec apprentissage automatique et capacités prédictives.",
+        "features": [
+          "Optimisation par apprentissage automatique",
+          "Insights clients prédictifs",
+          "Formation de modèles IA personnalisés",
+          "Workflows d'automatisation avancés"
+        ]
+      }
+    },
+    "voiceAi": {
+      "title": "Services d'IA Vocale",
+      "description": "Agents vocaux professionnels qui gèrent les appels et capturent les prospects intelligemment",
+      "basic": {
+        "name": "Basique",
+        "description": "Une voix professionnelle qui répond à chaque appel et capture les prospects.",
+        "features": [
+          "Réponses instantanées aux questions courantes",
+          "Envoie les détails de l'appelant vers boîte de réception/CRM",
+          "Transfers intelligents pour que les appelants atteignent la bonne personne",
+          "Couverture hors heures + messagerie vocale"
+        ]
+      },
+      "smart": {
+        "name": "Intelligent",
+        "description": "IA vocale intelligente avec flux de conversation naturel et analyse des sentiments.",
+        "features": [
+          "Flux de conversation naturel",
+          "Analyse des sentiments",
+          "Optimisation du routage d'appels",
+          "Transcription en temps réel"
+        ]
+      },
+      "fullAI": {
+        "name": "IA Complète",
+        "description": "IA vocale avancée avec intelligence émotionnelle et appels prédictifs.",
+        "features": [
+          "Intelligence émotionnelle",
+          "Résultats d'appels prédictifs",
+          "Formation vocale personnalisée",
+          "Analyses d'appels avancées"
+        ]
+      }
+    },
+    "automation": {
+      "title": "Services d'Automatisation",
+      "description": "Workflows intelligents qui font gagner du temps et rationalisent les processus commerciaux",
+      "basic": {
+        "name": "Basique",
+        "description": "Gagnez du temps sur les tâches répétitives et maintenez les workflows en fonctionnement.",
+        "features": [
+          "Automatise les formulaires, rappels, notifications",
+          "Connecte Sheets, e-mail, calendrier",
+          "Stocke et organise automatiquement les prospects",
+          "Fonctionne 24/7 en arrière-plan"
+        ]
+      },
+      "smart": {
+        "name": "Intelligent",
+        "description": "Automatisation avancée avec logique conditionnelle et intégration multi-plateforme.",
+        "features": [
+          "Logique de workflow conditionnelle",
+          "Intégration multi-plateforme",
+          "Gestion et récupération d'erreurs",
+          "Surveillance des performances"
+        ]
+      },
+      "fullAI": {
+        "name": "IA Complète",
+        "description": "Automatisation alimentée par l'IA qui apprend et optimise automatiquement les processus.",
+        "features": [
+          "Workflows auto-optimisants",
+          "Automatisation prédictive",
+          "Intégration de modèles IA personnalisés",
+          "Exploration de processus avancée"
+        ]
+      }
+    },
+    "reviews": {
+      "title": "Avis et Réputation",
+      "description": "Systèmes automatisés pour collecter et gérer les commentaires et avis clients",
+      "basic": {
+        "name": "Basique",
+        "description": "Collectez plus d'avis positifs avec un minimum d'effort.",
+        "features": [
+          "Demandes automatisées SMS/e-mail",
+          "Direct vers Google et Facebook",
+          "Suivi simple des demandes",
+          "Relances jusqu'à ce que l'avis soit laissé"
+        ]
+      },
+      "smart": {
+        "name": "Intelligent",
+        "description": "Gestion intelligente des avis avec analyse des sentiments et automatisation des réponses.",
+        "features": [
+          "Analyse des sentiments",
+          "Génération automatique de réponses",
+          "Analyse des tendances d'avis",
+          "Surveillance des concurrents"
+        ]
+      },
+      "fullAI": {
+        "name": "IA Complète",
+        "description": "Gestion complète de la réputation avec insights alimentés par l'IA et optimisation.",
+        "features": [
+          "Score de réputation alimenté par l'IA",
+          "Tendances d'avis prédictives",
+          "Récupération automatique de la réputation",
+          "Tableau de bord d'analyses avancé"
+        ]
+      }
+    },
+    "analytics": {
+      "title": "Analyses et Rapports",
+      "description": "Insights alimentés par l'IA et rapports automatisés pour des décisions basées sur les données",
+      "basic": {
+        "name": "Basique",
+        "description": "KPI simples toujours disponibles sans tableurs.",
+        "features": [
+          "Rapports quotidiens/hebdomadaires de prospects et ventes",
+          "Top KPI dans un tableau de bord clair",
+          "Rapports résumés par e-mail/SMS",
+          "Suivi des données 24/7"
+        ]
+      },
+      "smart": {
+        "name": "Intelligent",
+        "description": "Analyses avancées avec insights prédictifs et recommandations automatisées.",
+        "features": [
+          "Analyses prédictives",
+          "Recommandations automatisées",
+          "Création de tableau de bord personnalisé",
+          "Alertes en temps réel"
+        ]
+      },
+      "fullAI": {
+        "name": "IA Complète",
+        "description": "Plateforme d'analyses IA complète avec apprentissage automatique et insights automatisés.",
+        "features": [
+          "Modèles d'apprentissage automatique",
+          "Génération automatique d'insights",
+          "Prédictions IA personnalisées",
+          "Visualisation de données avancée"
+        ]
+      }
+    }
+  },
+  "contentMarketing": {
+    "chatbots": {
+      "title": "Chatbots Intelligents",
+      "description": "Déployez des chatbots alimentés par l'IA qui fournissent un support client instantané, capturent les prospects et guident les utilisateurs dans votre entonnoir de vente 24/7. Notre IA conversationnelle avancée comprend le contexte et offre des expériences personnalisées."
+    },
+    "voiceAi": {
+      "title": "Solutions d'IA Vocale",
+      "description": "Transformez votre système téléphonique avec des agents vocaux professionnels qui gèrent les appels intelligemment, capturent les prospects et offrent des expériences client fluides. Ne manquez plus jamais une opportunité avec notre routage d'appels intelligent."
+    },
+    "automation": {
+      "title": "Automatisation d'Entreprise",
+      "description": "Rationalisez vos opérations avec une automatisation intelligente qui gère les tâches répétitives, connecte vos systèmes et maintient vos workflows fonctionnant en douceur. Gagnez du temps et réduisez les erreurs avec nos solutions d'automatisation intelligentes."
+    },
+    "reviews": {
+      "title": "Gestion des Avis",
+      "description": "Collectez et gérez automatiquement les avis clients avec notre système intelligent de gestion de la réputation. Boostez votre présence en ligne et construisez la confiance avec des demandes d'avis automatisées et une gestion intelligente des réponses."
+    },
+    "analytics": {
+      "title": "Analyses et Insights IA",
+      "description": "Obtenez des insights exploitables de vos données avec notre plateforme d'analyses alimentée par l'IA. Suivez les performances, prédisez les tendances et prenez des décisions basées sur les données avec des rapports automatisés et des recommandations intelligentes."
+    }
+  },
+  "imageTrail": {
+    "badge": "Vitrine Créative (DÉPLACEZ VOTRE CURSEUR)",
+    "heading1": "EXPLORER",
+    "heading2": "L'Excellence",
+    "heading3": "VISUELLE"
+  }
+}

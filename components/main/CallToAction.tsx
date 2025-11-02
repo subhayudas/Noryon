@@ -4,10 +4,12 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { SparklesIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { ShimmerButton } from "../ui/shimmer-button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CallToAction = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.3 });
+  const { t } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -119,7 +121,7 @@ const CallToAction = () => {
           >
             <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
             <span className="text-xs font-medium tracking-wider text-white/90 uppercase font-questrial">
-              Ready to Transform?
+              {t("cta.badge")}
             </span>
           </motion.div>
 
@@ -128,10 +130,10 @@ const CallToAction = () => {
             variants={scaleVariants}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-light leading-tight text-white mb-8 font-helvetica-neue tracking-tight"
           >
-            <span className="block font-light">LET'S BUILD</span>
+            <span className="block font-light">{t("cta.heading1")}</span>
             <span className="block">
-              <span className="font-medium italic text-[#04a8ae]">Something</span>
-              <span className="font-light"> EXTRAORDINARY</span>
+              <span className="font-medium italic text-[#04a8ae]">{t("cta.heading2")}</span>
+              <span className="font-light"> {t("cta.heading3")}</span>
             </span>
           </motion.h2>
 
@@ -140,8 +142,7 @@ const CallToAction = () => {
             variants={itemVariants}
             className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed mb-12 font-questrial"
           >
-            Ready to elevate your digital presence? Join the ranks of successful businesses 
-            who have transformed their growth trajectory with our innovative solutions.
+            {t("cta.description")}
           </motion.p>
 
           {/* Stats Row */}
@@ -150,10 +151,10 @@ const CallToAction = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 max-w-4xl mx-auto"
           >
             {[
-              { number: "200%", label: "Average ROI" },
-              { number: "50+", label: "Projects Delivered" },
-              { number: "24/7", label: "Support Available" },
-              { number: "100%", label: "Client Satisfaction" },
+              { number: "200%", label: t("cta.stat1") },
+              { number: "50+", label: t("cta.stat2") },
+              { number: "24/7", label: t("cta.stat3") },
+              { number: "100%", label: t("cta.stat4") },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -189,7 +190,7 @@ const CallToAction = () => {
                 className="text-white font-medium text-base px-8 py-4 shadow-xl hover:shadow-amber-500/25 transition-all duration-300 font-questrial"
               >
                 <span className="flex items-center">
-                  Book Your Free Strategy Call
+                  {t("cta.primaryButton")}
                   <ArrowRightIcon className="ml-2 h-4 w-4" />
                 </span>
               </ShimmerButton>
@@ -205,7 +206,7 @@ const CallToAction = () => {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 border border-white/30 text-white font-medium rounded-full backdrop-blur-md hover:border-amber-400/50 transition-all duration-300 font-questrial"
             >
-              View Our Portfolio
+              {t("cta.secondaryButton")}
             </motion.button>
           </motion.div>
 
@@ -215,22 +216,22 @@ const CallToAction = () => {
             className="mt-16 pt-8 border-t border-white/10"
           >
             <p className="text-white/60 text-sm mb-4 font-questrial">
-              Trusted by startups and enterprises worldwide
+              {t("cta.trustedBy")}
             </p>
             
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
               {/* Company logos or indicators */}
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-amber-400 to-orange-600 rounded-full"></div>
-                <span className="text-white/80 text-sm font-questrial">Enterprise Grade</span>
+                <span className="text-white/80 text-sm font-questrial">{t("cta.enterpriseGrade")}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full"></div>
-                <span className="text-white/80 text-sm font-questrial">24/7 Support</span>
+                <span className="text-white/80 text-sm font-questrial">{t("cta.support247")}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full"></div>
-                <span className="text-white/80 text-sm font-questrial">Proven Results</span>
+                <span className="text-white/80 text-sm font-questrial">{t("cta.provenResults")}</span>
               </div>
             </div>
           </motion.div>

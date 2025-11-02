@@ -8,8 +8,10 @@ import AnimatedHeading from "../ui/animated-heading";
 import { FaLinkedinIn, FaTwitter, FaInstagram } from "react-icons/fa";
 import { SparklesIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import { useMotionValue, useSpring } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const TeamSection = () => {
+  const { t } = useLanguage();
   // State for active team member
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
@@ -187,13 +189,13 @@ const TeamSection = () => {
               >
                 <SparklesIcon className="h-5 w-5 mr-2 text-gray-500" />
               </motion.div>
-              Our Leadership
+              {t("team.leadership")}
             </motion.span>
                           <div className="h-[1px] w-12 bg-gradient-to-l from-transparent to-gray-500 ml-4"></div>
           </div>
 
           <AnimatedHeading as="h2" className="text-4xl md:text-5xl font-bold mb-4">
-            Meet Our Founder
+            {t("team.meetFounder")}
           </AnimatedHeading>
 
           
@@ -366,7 +368,7 @@ const TeamSection = () => {
                     </div>
 
                     <div className="mb-8">
-                      <h4 className="text-white text-lg font-medium mb-4 font-helvetica-neue">Expertise</h4>
+                      <h4 className="text-white text-lg font-medium mb-4 font-helvetica-neue">{t("team.expertise")}</h4>
                       <div className="flex flex-wrap gap-2">
                         {teamMembers[activeIndex].skills.map((skill, i) => (
                           <motion.span
@@ -394,7 +396,7 @@ const TeamSection = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
                       >
-                        Connect
+                        {t("team.connect")}
                         <ArrowRightIcon className="h-4 w-4" />
                       </motion.button>
 

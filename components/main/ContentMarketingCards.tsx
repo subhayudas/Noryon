@@ -4,6 +4,7 @@ import { useTransform, motion, useScroll, MotionValue } from 'framer-motion';
 import { useRef, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 import { contentMarketingData, ContentMarketingData } from './contentMarketingData';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface CardProps {
   i: number;
@@ -138,13 +139,48 @@ const ContentMarketingCards = forwardRef<HTMLElement>((props, ref) => {
     target: container,
     offset: ['start start', 'end end'],
   });
+  const { t } = useLanguage();
+  
+  // Get translated content marketing data
+  const translatedData = [
+    {
+      title: t("contentMarketing.chatbots.title"),
+      description: t("contentMarketing.chatbots.description"),
+      image: contentMarketingData[0].image,
+      color: contentMarketingData[0].color
+    },
+    {
+      title: t("contentMarketing.voiceAi.title"),
+      description: t("contentMarketing.voiceAi.description"),
+      image: contentMarketingData[1].image,
+      color: contentMarketingData[1].color
+    },
+    {
+      title: t("contentMarketing.automation.title"),
+      description: t("contentMarketing.automation.description"),
+      image: contentMarketingData[2].image,
+      color: contentMarketingData[2].color
+    },
+    {
+      title: t("contentMarketing.reviews.title"),
+      description: t("contentMarketing.reviews.description"),
+      image: contentMarketingData[3].image,
+      color: contentMarketingData[3].color
+    },
+    {
+      title: t("contentMarketing.analytics.title"),
+      description: t("contentMarketing.analytics.description"),
+      image: contentMarketingData[4].image,
+      color: contentMarketingData[4].color
+    }
+  ];
 
   return (
     <ReactLenis root>
       <main className='bg-[#202636]' ref={container}>
         <section className='text-white w-full bg-[#202636]'>
-          {contentMarketingData.map((item, i) => {
-            const targetScale = 1 - (contentMarketingData.length - i) * 0.05;
+          {translatedData.map((item, i) => {
+            const targetScale = 1 - (translatedData.length - i) * 0.05;
             return (
               <Card
                 key={`cm_${i}`}

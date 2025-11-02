@@ -4,8 +4,10 @@ import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
 import ImageCursorTrail from "../ui/image-cursortrail";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ImageTrailSection = () => {
+  const { t } = useLanguage();
   const imageTrailItems = [
     { src: "/imagetrail1.jpeg", alt: "Creative Project 1" },
     { src: "/imagetrail2.jpeg", alt: "Creative Project 2" },
@@ -41,7 +43,7 @@ const ImageTrailSection = () => {
           >
             <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
             <span className="text-xs font-medium tracking-wider text-white/90 uppercase">
-              Creative Showcase (MOVE YOUR CURSOR)
+              {t("imageTrail.badge")}
             </span>
           </motion.div>
 
@@ -59,10 +61,10 @@ const ImageTrailSection = () => {
                 letterSpacing: "-0.02em"
               }}
             >
-              <span className="block mb-2 font-light">EXPLORE</span>
+              <span className="block mb-2 font-light">{t("imageTrail.heading1")}</span>
               <span className="block">
-                <span className="font-medium text-[#04a8ae]">Visual</span>
-                <span className="font-light"> EXCELLENCE</span>
+                <span className="font-medium text-[#04a8ae]">{t("imageTrail.heading2")}</span>
+                <span className="font-light"> {t("imageTrail.heading3")}</span>
               </span>
             </h2>
           </motion.div>
