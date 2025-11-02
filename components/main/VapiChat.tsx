@@ -205,12 +205,19 @@ const VapiChat = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/vapi", {
+      // Build conversation history for OpenAI (last 10 messages to keep context)
+      const recentMessages = messages.slice(-10).map((msg) => ({
+        role: msg.sender === "user" ? "user" : "assistant",
+        content: msg.text,
+      }));
+
+      // Send message to OpenAI API
+      const response = await fetch("/api/openai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          action: "send_message",
           message: messageText,
+          messages: recentMessages,
         }),
       });
 
@@ -222,17 +229,11 @@ const VapiChat = () => {
       
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: data.response || data.message || "Thank you for your message! I'm processing your request.",
+        text: data.response || "Thank you for your message! I'm processing your request.",
         sender: "assistant",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, assistantMessage]);
-      
-      if (synthesisRef.current && data.response) {
-        const utterance = new SpeechSynthesisUtterance(data.response);
-        utterance.lang = "en-US";
-        synthesisRef.current.speak(utterance);
-      }
     } catch (error: any) {
       console.error("Error sending message:", error);
       const errorMessage: Message = {
