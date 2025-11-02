@@ -7,7 +7,8 @@ import {
   MessageCircle, 
   X,
   Send,
-  Loader2
+  Loader2,
+  Calendar
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
@@ -48,6 +49,38 @@ const VapiChat = () => {
     minHeight: 52,
     maxHeight: 200,
   });
+
+
+  // Load Calendly script, CSS, and badge widget
+  useEffect(() => {
+    const loadCalendly = () => {
+      // Load CSS if not already loaded
+      if (!document.getElementById('calendly-stylesheet')) {
+        const link = document.createElement('link');
+        link.id = 'calendly-stylesheet';
+        link.href = 'https://assets.calendly.com/assets/external/widget.css';
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+      }
+      
+      // Load script if not already loaded
+      if (!document.getElementById('calendly-script')) {
+        const script = document.createElement('script');
+        script.id = 'calendly-script';
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        script.type = 'text/javascript';
+        
+        script.onload = () => {
+          // Calendly script loaded, popup will work when button is clicked
+        };
+        
+        document.head.appendChild(script);
+      }
+    };
+    
+    loadCalendly();
+  }, []);
 
   // Load API keys on mount
   useEffect(() => {
@@ -442,6 +475,18 @@ const VapiChat = () => {
     }
   };
 
+  const handleBookingClick = () => {
+    // Open Calendly popup
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({
+        url: 'https://calendly.com/subhayudas49/30min'
+      });
+    } else {
+      // Fallback: open in new tab if Calendly not loaded
+      window.open('https://calendly.com/subhayudas49/30min', '_blank');
+    }
+  };
+
   return (
     <>
       {/* Chat Widget Button */}
@@ -555,15 +600,15 @@ const VapiChat = () => {
                                   li: ({ children }) => <li className="ml-4 leading-relaxed">{children}</li>,
                                   strong: ({ children }) => <strong className="font-bold text-gray-900 dark:text-gray-100">{children}</strong>,
                                   em: ({ children }) => <em className="italic">{children}</em>,
-                                  code: ({ inline, children }) => {
-                                    return inline ? (
+                                  code: (props: any) => {
+                                    return props.inline ? (
                                       <code className="bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded text-xs font-mono text-gray-900 dark:text-gray-100">
-                                        {children}
+                                        {props.children}
                                       </code>
                                     ) : (
                                       <pre className="bg-gray-200 dark:bg-gray-800 p-3 rounded-lg overflow-x-auto my-2 border border-gray-300 dark:border-gray-600">
                                         <code className="text-xs font-mono text-gray-900 dark:text-gray-100 block">
-                                          {children}
+                                          {props.children}
                                         </code>
                                       </pre>
                                     );
@@ -614,6 +659,7 @@ const VapiChat = () => {
                     </motion.div>
                   ))
                 )}
+                
                 <div ref={messagesEndRef} />
               </div>
             )}
@@ -674,6 +720,17 @@ const VapiChat = () => {
                         >
                           <Mic className="w-4 h-4" />
                           <span className="text-sm">Voice</span>
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleBookingClick}
+                          className={cn(
+                            "rounded-full transition-all flex items-center gap-2 px-1.5 py-1 border h-8 cursor-pointer",
+                            "bg-black/5 dark:bg-white/5 border-transparent text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
+                          )}
+                        >
+                          <Calendar className="w-4 h-4" />
+                          <span className="text-sm">Book a Call</span>
                         </button>
                       </div>
                       <div className="absolute right-3 bottom-3">
