@@ -356,57 +356,59 @@ const VapiChat = () => {
               </button>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              {messages.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full text-gray-400 dark:text-gray-500">
-                  <MessageCircle className="h-12 w-12 mb-4 opacity-50" />
-                  <p className="text-center">
-                    Start a conversation with our AI assistant.
-                    <br />
-                    You can chat via text or voice!
-                  </p>
-                </div>
-              ) : (
-                messages.map((message) => (
-                  <motion.div
-                    key={message.id}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className={cn(
-                      "flex",
-                      message.sender === "user" ? "justify-end" : "justify-start"
-                    )}
-                  >
-                    <div
+            {/* Messages - Hidden during voice chat */}
+            {!callActive && (
+              <div className="flex-1 overflow-y-auto p-4 space-y-4">
+                {messages.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center h-full text-gray-400 dark:text-gray-500">
+                    <MessageCircle className="h-12 w-12 mb-4 opacity-50" />
+                    <p className="text-center">
+                      Start a conversation with our AI assistant.
+                      <br />
+                      You can chat via text or voice!
+                    </p>
+                  </div>
+                ) : (
+                  messages.map((message) => (
+                    <motion.div
+                      key={message.id}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
                       className={cn(
-                        "max-w-[80%] rounded-2xl px-4 py-2",
-                        message.sender === "user"
-                          ? "bg-sky-500 text-white"
-                          : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100",
-                        message.isTranscribing && "opacity-70"
+                        "flex",
+                        message.sender === "user" ? "justify-end" : "justify-start"
                       )}
                     >
-                      <p className="text-sm">{message.text}</p>
-                      {message.isTranscribing && (
-                        <div className="flex items-center gap-1 mt-1">
-                          <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" />
-                          <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
-                          <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }} />
-                        </div>
-                      )}
-                      <span className="text-xs opacity-70 mt-1 block">
-                        {message.timestamp.toLocaleTimeString([], {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        })}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))
-              )}
-              <div ref={messagesEndRef} />
-            </div>
+                      <div
+                        className={cn(
+                          "max-w-[80%] rounded-2xl px-4 py-2",
+                          message.sender === "user"
+                            ? "bg-sky-500 text-white"
+                            : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100",
+                          message.isTranscribing && "opacity-70"
+                        )}
+                      >
+                        <p className="text-sm">{message.text}</p>
+                        {message.isTranscribing && (
+                          <div className="flex items-center gap-1 mt-1">
+                            <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" />
+                            <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }} />
+                            <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }} />
+                          </div>
+                        )}
+                        <span className="text-xs opacity-70 mt-1 block">
+                          {message.timestamp.toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </span>
+                      </div>
+                    </motion.div>
+                  ))
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+            )}
 
             {/* Input Area - Switch between Text and Voice UI */}
             {!callActive ? (
