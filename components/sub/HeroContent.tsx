@@ -31,7 +31,7 @@ const HeroContent = () => {
         >
           <SparklesIcon className="text-amber-400 mr-2 h-4 w-4" />
           <span className="text-xs font-medium tracking-wider text-white/90 uppercase">
-            AI Agents & Automation Agency
+            NORYON.AI
           </span>
         </motion.div>
 
