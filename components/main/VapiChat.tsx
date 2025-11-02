@@ -6,8 +6,6 @@ import {
   Mic, 
   MessageCircle, 
   X,
-  Globe,
-  Paperclip,
   Send,
   Loader2
 } from "lucide-react";
@@ -30,6 +28,7 @@ const VapiChat = () => {
   const [inputMessage, setInputMessage] = useState("");
   const [isRecording, setIsRecording] = useState(false);
   const [callActive, setCallActive] = useState(false);
+  const [callConnected, setCallConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [publicApiKey, setPublicApiKey] = useState<string | null>(null);
   const [assistantId, setAssistantId] = useState<string | null>(null);
@@ -65,11 +64,13 @@ const VapiChat = () => {
             // Set up event listeners
             vapi.on("call-start", () => {
               setCallActive(true);
+              setCallConnected(true);
               setVoiceTime(0);
             });
             
             vapi.on("call-end", () => {
               setCallActive(false);
+              setCallConnected(false);
               setVoiceTime(0);
             });
             
@@ -164,10 +165,10 @@ const VapiChat = () => {
     };
   }, []);
 
-  // Voice timer effect
+  // Voice timer effect - only start when call is actually connected
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
-    if (callActive) {
+    if (callConnected) {
       intervalId = setInterval(() => {
         setVoiceTime((t) => t + 1);
       }, 1000);
@@ -175,7 +176,7 @@ const VapiChat = () => {
       setVoiceTime(0);
     }
     return () => clearInterval(intervalId);
-  }, [callActive]);
+  }, [callConnected]);
 
   // Scroll to bottom when new messages arrive
   useEffect(() => {
@@ -277,22 +278,29 @@ const VapiChat = () => {
       return;
     }
 
-    try {
-      setIsLoading(true);
-      const result = await vapiRef.current.start(assistantId);
-      
-      if (result) {
-        setCallActive(true);
-      } else {
-        throw new Error("Failed to start call - no result returned");
+      try {
+        setIsLoading(true);
+        // Reset connection state
+        setCallConnected(false);
+        setVoiceTime(0);
+        
+        const result = await vapiRef.current.start(assistantId);
+        
+        if (result) {
+          // Call started, but wait for call-start event to set callConnected
+          setCallActive(true);
+        } else {
+          throw new Error("Failed to start call - no result returned");
+        }
+      } catch (error: any) {
+        console.error("Error starting voice call:", error);
+        alert("Failed to start voice call: " + (error.message || "Unknown error"));
+        setCallActive(false);
+        setCallConnected(false);
+        setVoiceTime(0);
+      } finally {
+        setIsLoading(false);
       }
-    } catch (error: any) {
-      console.error("Error starting voice call:", error);
-      alert("Failed to start voice call: " + (error.message || "Unknown error"));
-      setCallActive(false);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   const stopVoiceCall = async () => {
@@ -304,6 +312,8 @@ const VapiChat = () => {
       }
     }
     setCallActive(false);
+    setCallConnected(false);
+    setVoiceTime(0);
   };
 
   const handleVoiceClick = () => {
@@ -455,65 +465,6 @@ const VapiChat = () => {
                     </div>
                     <div className="h-12 bg-black/5 dark:bg-white/5 rounded-b-xl">
                       <div className="absolute left-3 bottom-3 flex items-center gap-2">
-                        <label className="cursor-pointer rounded-lg p-2 bg-black/5 dark:bg-white/5">
-                          <input type="file" className="hidden" />
-                          <Paperclip className="w-4 h-4 text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white transition-colors" />
-                        </label>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setShowSearch(!showSearch);
-                          }}
-                          className={cn(
-                            "rounded-full transition-all flex items-center gap-2 px-1.5 py-1 border h-8 cursor-pointer",
-                            showSearch
-                              ? "bg-sky-500/15 border-sky-400 text-sky-500"
-                              : "bg-black/5 dark:bg-white/5 border-transparent text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
-                          )}
-                        >
-                          <div className="w-4 h-4 flex items-center justify-center shrink-0">
-                            <motion.div
-                              animate={{
-                                rotate: showSearch ? 180 : 0,
-                                scale: showSearch ? 1.1 : 1,
-                              }}
-                              whileHover={{
-                                rotate: showSearch ? 180 : 15,
-                                scale: 1.1,
-                                transition: {
-                                  type: "spring",
-                                  stiffness: 300,
-                                  damping: 10,
-                                },
-                              }}
-                              transition={{
-                                type: "spring",
-                                stiffness: 260,
-                                damping: 25,
-                              }}
-                            >
-                              <Globe
-                                className={cn(
-                                  "w-4 h-4",
-                                  showSearch ? "text-sky-500" : "text-inherit"
-                                )}
-                              />
-                            </motion.div>
-                          </div>
-                          <AnimatePresence>
-                            {showSearch && (
-                              <motion.span
-                                initial={{ width: 0, opacity: 0 }}
-                                animate={{ width: "auto", opacity: 1 }}
-                                exit={{ width: 0, opacity: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="text-sm overflow-hidden whitespace-nowrap text-sky-500 shrink-0"
-                              >
-                                Search
-                              </motion.span>
-                            )}
-                          </AnimatePresence>
-                        </button>
                         <button
                           type="button"
                           onClick={handleVoiceClick}
