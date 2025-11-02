@@ -130,7 +130,7 @@ const CallToAction = () => {
           >
             <span className="block font-light">LET'S BUILD</span>
             <span className="block">
-              <span className="font-medium italic text-amber-400">Something</span>
+              <span className="font-medium italic text-[#04a8ae]">Something</span>
               <span className="font-light"> EXTRAORDINARY</span>
             </span>
           </motion.h2>
@@ -160,7 +160,7 @@ const CallToAction = () => {
                 variants={scaleVariants}
                 className="text-center p-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl hover:border-amber-400/30 transition-all duration-300"
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-amber-400 mb-1 font-helvetica-neue">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#04a8ae] mb-1 font-helvetica-neue">
                   {stat.number}
                 </h3>
                 <p className="text-white/70 text-sm font-questrial">

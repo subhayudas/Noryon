@@ -48,7 +48,7 @@ const HeroContent = () => {
           >
             <span className="block mb-2 font-light">INTELLIGENT</span>
             <span className="block">
-              <span className="font-medium text-amber-400">AI-Powered</span>
+              <span className="font-medium text-[#04a8ae]">AI-Powered</span>
               <span className="font-light"> SOLUTIONS</span>
             </span>
           </h1>

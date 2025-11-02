@@ -111,7 +111,7 @@ const Footer = () => {
                 />
               </motion.div>
               <motion.h2 
-                className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-300"
+                className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-[#04a8ae]"
                 animate={{
                   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
                 }}

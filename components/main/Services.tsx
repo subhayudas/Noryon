@@ -122,7 +122,7 @@ const Services = () => {
           >
             <span className="block mb-2 font-light">AI-POWERED</span>
             <span className="block">
-              <span className="font-medium text-amber-400">Business</span>
+              <span className="font-medium text-[#04a8ae]">Business</span>
               <span className="font-light"> SOLUTIONS</span>
             </span>
           </motion.h2>

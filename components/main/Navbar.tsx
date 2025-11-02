@@ -505,7 +505,7 @@ const Navbar = () => {
                   {navigationItems.map((item) => (
                     <motion.button
                       key={item.name}
-                      onClick={() => handleSmoothScroll(item.href)}
+                      onClick={() => handleNavigation(item.href)}
                       className="text-white hover:text-orange-400 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 hover:bg-white/10 text-left"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}

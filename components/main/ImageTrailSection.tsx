@@ -61,7 +61,7 @@ const ImageTrailSection = () => {
             >
               <span className="block mb-2 font-light">EXPLORE</span>
               <span className="block">
-                <span className="font-medium text-amber-400">Visual</span>
+                <span className="font-medium text-[#04a8ae]">Visual</span>
                 <span className="font-light"> EXCELLENCE</span>
               </span>
             </h2>
