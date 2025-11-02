@@ -13,6 +13,9 @@ import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea";
 import Vapi from "@vapi-ai/web";
+import PulsatingDots from "@/components/ui/PulsatingDots";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 interface Message {
   id: string;
@@ -178,10 +181,49 @@ const VapiChat = () => {
     return () => clearInterval(intervalId);
   }, [callConnected]);
 
-  // Scroll to bottom when new messages arrive
+  // Prevent body scroll when chat is open
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    if (isOpen) {
+      // Store current scroll position
+      const scrollY = window.scrollY;
+      
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      
+      // Store scroll position for restoration
+      return () => {
+        const body = document.body;
+        const top = body.style.top;
+        
+        // Restore body scroll
+        body.style.overflow = '';
+        body.style.position = '';
+        body.style.top = '';
+        body.style.width = '';
+        
+        // Restore scroll position
+        if (top) {
+          window.scrollTo(0, parseInt(top || '0') * -1);
+        }
+      };
+    } else {
+      // Cleanup when closed
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+    }
+  }, [isOpen]);
+
+  // Scroll to bottom when new messages arrive or when streaming
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages, isLoading]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -205,6 +247,16 @@ const VapiChat = () => {
     adjustHeight(true);
     setIsLoading(true);
 
+    // Create a placeholder message for the assistant's streaming response
+    const assistantMessageId = (Date.now() + 1).toString();
+    const assistantMessage: Message = {
+      id: assistantMessageId,
+      text: "",
+      sender: "assistant",
+      timestamp: new Date(),
+    };
+    setMessages((prev) => [...prev, assistantMessage]);
+
     try {
       // Build conversation history for OpenAI (last 10 messages to keep context)
       const recentMessages = messages.slice(-10).map((msg) => ({
@@ -212,7 +264,7 @@ const VapiChat = () => {
         content: msg.text,
       }));
 
-      // Send message to OpenAI API
+      // Send message to OpenAI API with streaming
       const response = await fetch("/api/openai", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -222,28 +274,94 @@ const VapiChat = () => {
         }),
       });
 
-      const data = await response.json();
-      
-      if (data.error) {
-        throw new Error(data.error);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: data.response || "Thank you for your message! I'm processing your request.",
-        sender: "assistant",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, assistantMessage]);
+
+      // Handle streaming response
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+
+      if (!reader) {
+        throw new Error("No response body");
+      }
+
+      let fullText = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          break;
+        }
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n');
+
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+
+            if (data === '[DONE]') {
+              break;
+            }
+
+            try {
+              const parsed = JSON.parse(data);
+              
+              if (parsed.error) {
+                throw new Error(parsed.error);
+              }
+
+              if (parsed.content) {
+                fullText += parsed.content;
+                // Update the message with streaming content
+                setMessages((prev) =>
+                  prev.map((msg) =>
+                    msg.id === assistantMessageId
+                      ? { ...msg, text: fullText }
+                      : msg
+                  )
+                );
+                // Scroll to bottom during streaming
+                setTimeout(() => {
+                  messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+                }, 0);
+              }
+            } catch (e) {
+              // Skip invalid JSON or parsing errors
+              if (e instanceof Error && e.message.includes('error')) {
+                throw e;
+              }
+            }
+          }
+        }
+      }
+
+      // Final update to ensure the message is complete
+      if (fullText.trim() === "") {
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === assistantMessageId
+              ? { ...msg, text: "Thank you for your message! I'm processing your request." }
+              : msg
+          )
+        );
+      }
     } catch (error: any) {
       console.error("Error sending message:", error);
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        text: "I apologize, but I'm having trouble connecting right now. Please try again.",
-        sender: "assistant",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === assistantMessageId
+            ? {
+                ...msg,
+                text: error.message?.includes('Failed') 
+                  ? "I apologize, but I'm having trouble connecting right now. Please try again."
+                  : `I apologize, but an error occurred: ${error.message || 'Unknown error'}. Please try again.`,
+              }
+            : msg
+        )
+      );
     } finally {
       setIsLoading(false);
     }
@@ -340,15 +458,26 @@ const VapiChat = () => {
         </motion.button>
       )}
 
-      {/* Chat Window */}
+      {/* Chat Window with Backdrop */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-6 right-6 z-50 h-[600px] w-[500px] max-w-[calc(100vw-2rem)] rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-2xl flex flex-col overflow-hidden"
-          >
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
+            />
+            {/* Chat Window */}
+            <motion.div
+              initial={{ opacity: 0, y: 20, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.9 }}
+              onClick={(e) => e.stopPropagation()}
+              className="fixed bottom-6 right-6 z-50 h-[600px] w-[500px] max-w-[calc(100vw-2rem)] rounded-2xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-2xl flex flex-col overflow-hidden"
+            >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50">
               <div className="flex items-center gap-3">
@@ -369,7 +498,22 @@ const VapiChat = () => {
 
             {/* Messages - Hidden during voice chat */}
             {!callActive && (
-              <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              <div 
+                className="flex-1 overflow-y-auto p-4 space-y-4 overscroll-contain"
+                style={{ 
+                  maxHeight: 'calc(600px - 180px)',
+                  WebkitOverflowScrolling: 'touch',
+                  touchAction: 'pan-y'
+                }}
+                onWheel={(e) => {
+                  // Prevent wheel events from propagating to body
+                  e.stopPropagation();
+                }}
+                onTouchMove={(e) => {
+                  // Prevent touch events from propagating to body
+                  e.stopPropagation();
+                }}
+              >
                 {messages.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full text-gray-400 dark:text-gray-500">
                     <MessageCircle className="h-12 w-12 mb-4 opacity-50" />
@@ -399,7 +543,58 @@ const VapiChat = () => {
                           message.isTranscribing && "opacity-70"
                         )}
                       >
-                        <p className="text-sm">{message.text}</p>
+                        {message.text ? (
+                          message.sender === "assistant" ? (
+                            <div className="text-sm text-gray-900 dark:text-gray-100">
+                              <ReactMarkdown
+                                remarkPlugins={[remarkGfm]}
+                                components={{
+                                  p: ({ children }) => <p className="mb-2 last:mb-0 leading-relaxed">{children}</p>,
+                                  ul: ({ children }) => <ul className="list-disc list-inside mb-2 space-y-1 ml-2">{children}</ul>,
+                                  ol: ({ children }) => <ol className="list-decimal list-inside mb-2 space-y-1 ml-2">{children}</ol>,
+                                  li: ({ children }) => <li className="ml-4 leading-relaxed">{children}</li>,
+                                  strong: ({ children }) => <strong className="font-bold text-gray-900 dark:text-gray-100">{children}</strong>,
+                                  em: ({ children }) => <em className="italic">{children}</em>,
+                                  code: ({ inline, children }) => {
+                                    return inline ? (
+                                      <code className="bg-gray-200 dark:bg-gray-700 px-1.5 py-0.5 rounded text-xs font-mono text-gray-900 dark:text-gray-100">
+                                        {children}
+                                      </code>
+                                    ) : (
+                                      <pre className="bg-gray-200 dark:bg-gray-800 p-3 rounded-lg overflow-x-auto my-2 border border-gray-300 dark:border-gray-600">
+                                        <code className="text-xs font-mono text-gray-900 dark:text-gray-100 block">
+                                          {children}
+                                        </code>
+                                      </pre>
+                                    );
+                                  },
+                                  pre: ({ children }) => <div className="my-2">{children}</div>,
+                                  h1: ({ children }) => <h1 className="text-lg font-bold mb-2 mt-3 first:mt-0 text-gray-900 dark:text-gray-100">{children}</h1>,
+                                  h2: ({ children }) => <h2 className="text-base font-bold mb-2 mt-3 first:mt-0 text-gray-900 dark:text-gray-100">{children}</h2>,
+                                  h3: ({ children }) => <h3 className="text-sm font-bold mb-1 mt-2 first:mt-0 text-gray-900 dark:text-gray-100">{children}</h3>,
+                                  h4: ({ children }) => <h4 className="text-sm font-semibold mb-1 mt-2 first:mt-0 text-gray-900 dark:text-gray-100">{children}</h4>,
+                                  blockquote: ({ children }) => <blockquote className="border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic my-2 text-gray-700 dark:text-gray-300">{children}</blockquote>,
+                                  a: ({ href, children }) => <a href={href} className="text-sky-600 dark:text-sky-400 underline hover:text-sky-700 dark:hover:text-sky-300" target="_blank" rel="noopener noreferrer">{children}</a>,
+                                  hr: () => <hr className="my-3 border-gray-300 dark:border-gray-600" />,
+                                  table: ({ children }) => <div className="overflow-x-auto my-2"><table className="min-w-full border-collapse border border-gray-300 dark:border-gray-600">{children}</table></div>,
+                                  thead: ({ children }) => <thead className="bg-gray-100 dark:bg-gray-700">{children}</thead>,
+                                  tbody: ({ children }) => <tbody>{children}</tbody>,
+                                  tr: ({ children }) => <tr className="border-b border-gray-200 dark:border-gray-600">{children}</tr>,
+                                  th: ({ children }) => <th className="border border-gray-300 dark:border-gray-600 px-3 py-2 text-left font-semibold text-gray-900 dark:text-gray-100">{children}</th>,
+                                  td: ({ children }) => <td className="border border-gray-300 dark:border-gray-600 px-3 py-2 text-gray-900 dark:text-gray-100">{children}</td>,
+                                }}
+                              >
+                                {message.text}
+                              </ReactMarkdown>
+                            </div>
+                          ) : (
+                            <p className="text-sm whitespace-pre-wrap">{message.text}</p>
+                          )
+                        ) : (
+                          <div className="py-2">
+                            <PulsatingDots />
+                          </div>
+                        )}
                         {message.isTranscribing && (
                           <div className="flex items-center gap-1 mt-1">
                             <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" />
@@ -407,12 +602,14 @@ const VapiChat = () => {
                             <div className="h-1 w-1 bg-sky-400 rounded-full animate-bounce" style={{ animationDelay: "0.4s" }} />
                           </div>
                         )}
-                        <span className="text-xs opacity-70 mt-1 block">
-                          {message.timestamp.toLocaleTimeString([], {
-                            hour: "2-digit",
-                            minute: "2-digit",
-                          })}
-                        </span>
+                        {message.text && (
+                          <span className="text-xs opacity-70 mt-1 block">
+                            {message.timestamp.toLocaleTimeString([], {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                            })}
+                          </span>
+                        )}
                       </div>
                     </motion.div>
                   ))
@@ -561,7 +758,8 @@ const VapiChat = () => {
                 </div>
               </div>
             )}
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
