@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Mic, 
@@ -51,6 +51,19 @@ const VapiChat = () => {
   });
 
 
+  // Define handleBookingClick before it's used in useEffect
+  const handleBookingClick = useCallback(() => {
+    // Open Calendly popup
+    if ((window as any).Calendly) {
+      (window as any).Calendly.initPopupWidget({
+        url: 'https://calendly.com/subhayudas49/30min'
+      });
+    } else {
+      // Fallback: open in new tab if Calendly not loaded
+      window.open('https://calendly.com/subhayudas49/30min', '_blank');
+    }
+  }, []);
+
   // Load Calendly script, CSS, and badge widget
   useEffect(() => {
     const loadCalendly = () => {
@@ -81,6 +94,19 @@ const VapiChat = () => {
     
     loadCalendly();
   }, []);
+
+  // Listen for openCalendlyPopup event to auto-trigger booking
+  useEffect(() => {
+    const handleOpenCalendlyPopup = () => {
+      handleBookingClick();
+    };
+
+    window.addEventListener('openCalendlyPopup', handleOpenCalendlyPopup);
+    
+    return () => {
+      window.removeEventListener('openCalendlyPopup', handleOpenCalendlyPopup);
+    };
+  }, [handleBookingClick]);
 
   // Load API keys on mount
   useEffect(() => {
@@ -276,9 +302,36 @@ const VapiChat = () => {
 
     setMessages((prev) => [...prev, userMessage]);
     const messageText = inputMessage;
+    
+    // Detect booking intent in user message and auto-trigger booking
+    const bookingIntentKeywords = [
+      'i want to book',
+      'i\'d like to book',
+      'i want to schedule',
+      'i\'d like to schedule',
+      'book a call',
+      'schedule a call',
+      'book a consultation',
+      'schedule a consultation',
+      'i want a call',
+      'let\'s schedule',
+      'can we schedule',
+      'when can we call'
+    ];
+    
+    const lowerMessage = messageText.toLowerCase();
+    const hasBookingIntent = bookingIntentKeywords.some(keyword => lowerMessage.includes(keyword));
+    
     setInputMessage("");
     adjustHeight(true);
     setIsLoading(true);
+    
+    // Auto-trigger booking if user expresses intent (with a small delay to show their message)
+    if (hasBookingIntent) {
+      setTimeout(() => {
+        handleBookingClick();
+      }, 500);
+    }
 
     // Create a placeholder message for the assistant's streaming response
     const assistantMessageId = (Date.now() + 1).toString();
@@ -381,6 +434,27 @@ const VapiChat = () => {
           )
         );
       }
+
+      // Detect booking intent in assistant response and auto-trigger booking
+      const bookingKeywords = [
+        'open our calendar',
+        'here\'s our calendar',
+        'i\'ll open the booking calendar',
+        'let me show you our available slots',
+        'book a call',
+        'schedule a consultation',
+        'book a consultation'
+      ];
+      
+      const lowerText = fullText.toLowerCase();
+      const hasBookingIntent = bookingKeywords.some(keyword => lowerText.includes(keyword));
+      
+      if (hasBookingIntent) {
+        // Small delay to ensure message is displayed first
+        setTimeout(() => {
+          handleBookingClick();
+        }, 500);
+      }
     } catch (error: any) {
       console.error("Error sending message:", error);
       setMessages((prev) =>
@@ -472,18 +546,6 @@ const VapiChat = () => {
       stopVoiceCall();
     } else {
       startVoiceCall();
-    }
-  };
-
-  const handleBookingClick = () => {
-    // Open Calendly popup
-    if ((window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
-        url: 'https://calendly.com/subhayudas49/30min'
-      });
-    } else {
-      // Fallback: open in new tab if Calendly not loaded
-      window.open('https://calendly.com/subhayudas49/30min', '_blank');
     }
   };
 
