@@ -1,0 +1,53 @@
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-text {
+  background: linear-gradient(
+    to right,
+    #202636, /* dark blue */
+    #0584af, /* blue */
+    #04a8ae, /* teal */
+    #00c8cf, /* cyan */
+    #00cad1, /* light cyan */
+    #00c8cf, /* cyan */
+    #04a8ae, /* teal */
+    #202636  /* dark blue */
+  );
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 8s ease-in-out infinite;
+}
+
+/* Special gradient for hero headings */
+.hero-violet-gradient {
+  background: linear-gradient(
+    to right,
+    #202636, /* dark blue */
+    #0584af, /* blue */
+    #04a8ae, /* teal */
+    #00c8cf, /* cyan */
+    #00cad1, /* light cyan */
+    #00c8cf, /* cyan */
+    #04a8ae, /* teal */
+    #0584af, /* blue */
+    #202636  /* dark blue */
+  );
+  background-size: 300% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 8s ease-in-out infinite;
+}

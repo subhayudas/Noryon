@@ -1,0 +1,59 @@
+/* Mobile performance optimizations */
+
+/* Apply hardware acceleration to all animated elements */
+.will-change-opacity,
+.will-change-transform,
+.transform-gpu {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: opacity, transform;
+}
+
+/* Optimize touch actions */
+.touch-manipulation {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Disable hover effects on mobile devices */
+.mobile-device .group:hover {
+  /* Override any hover styles that might cause lag */
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Mobile-specific card optimizations */
+.mobile-card {
+  /* Disable expensive animations on mobile */
+  transition: none !important;
+}
+
+/* Desktop-specific card optimizations */
+.desktop-card {
+  /* Use efficient transitions on desktop */
+  transition: transform 0.1s linear;
+}
+
+/* Reduce animation complexity on mobile */
+@media (max-width: 768px) {
+  /* Disable animations that might cause performance issues */
+  .animate-slow,
+  .animate-medium {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Optimize rendering performance */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
