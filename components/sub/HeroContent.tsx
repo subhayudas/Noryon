@@ -12,10 +12,9 @@ import { ShimmerButton } from "../ui/shimmer-button";
 
 const HeroContent = () => {
   const handleBookCall = () => {
-    const bookingSection = document.getElementById('BookingForm');
-    if (bookingSection) {
-      bookingSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    // Trigger Calendly popup
+    const event = new CustomEvent("openCalendlyPopup");
+    window.dispatchEvent(event);
   };
 
   return (

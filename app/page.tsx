@@ -20,6 +20,7 @@ import ContainerScroll from "@/components/main/ContainerScroll";
 
 // Import the BookingForm component at the top of your file
 import BookingForm from '@/components/main/BookingForm';
+import CalendlyWidget from '@/components/main/CalendlyWidget';
 
 export default function Home() {
   return (
@@ -115,6 +116,11 @@ export default function Home() {
         {/* Booking Form */}
         <div className="border-t border-white">
           <BookingForm />
+        </div>
+
+        {/* Calendly Booking Widget */}
+        <div className="border-t border-white">
+          <CalendlyWidget />
         </div>
       </div>
     </main>

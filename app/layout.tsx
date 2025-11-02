@@ -7,6 +7,7 @@ import Navbar from "@/components/main/Navbar";
 import Footer from "@/components/main/Footer";
 import LoadingAnimation from "@/components/main/LoadingAnimation";
 import VapiChat from "@/components/main/VapiChat";
+import CalendlyPopup from "@/components/main/CalendlyPopup";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -111,6 +112,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <VapiChat />
+        <CalendlyPopup />
       </body>
     </html>
   );
