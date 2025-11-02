@@ -50,12 +50,8 @@ const CalendlyPopup = () => {
       strategy="lazyOnload"
       onLoad={() => {
         setIsCalendlyLoaded(true);
-        // Initialize popup widget after script loads
-        if (window.Calendly) {
-          window.Calendly.initPopupWidget({
-            url: "https://calendly.com/subhayudas49/30min?hide_gdpr_banner=1",
-          });
-        }
+        // Don't initialize popup widget automatically - only show when explicitly triggered
+        // The showPopupWidget method will handle initialization if needed
       }}
     />
   );

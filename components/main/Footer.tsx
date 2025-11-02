@@ -351,7 +351,7 @@ const Footer = () => {
                 <div className="mt-1 text-orange-500 group-hover:text-orange-400 transition-colors">
                   <FaMapMarkerAlt className="h-5 w-5" />
                 </div>
-                <p className="text-gray-300 group-hover:text-white transition-colors">Gurgaon, Haryana</p>
+                <p className="text-gray-300 group-hover:text-white transition-colors">Montreal, Canada</p>
               </motion.div>
               <motion.div 
                 className="flex items-start space-x-3 group"
