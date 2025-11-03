@@ -264,6 +264,11 @@ const Navbar = () => {
             </motion.div>
           </div>
 
+          {/* Language Toggle - Centered */}
+          <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2">
+            <LanguageToggle />
+          </div>
+
           {/* Mobile menu button */}
           <div className="flex md:hidden">
             <button
@@ -307,9 +312,6 @@ const Navbar = () => {
 
           {/* Desktop Navigation with Dropdown */}
           <div className="hidden md:flex md:items-center md:space-x-6">
-            {/* Language Toggle */}
-            <LanguageToggle />
-            
             {/* Navigation Dropdown */}
             <div className="relative">
               <motion.button
