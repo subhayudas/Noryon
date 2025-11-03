@@ -118,7 +118,10 @@ export const Card = ({
               <img 
                 src={image} 
                 alt={title} 
-                className='absolute inset-0 w-full h-full object-cover'
+                className={cn(
+                  'absolute inset-0 w-full h-full',
+                  image.includes('logo.png') ? 'object-contain' : 'object-cover'
+                )}
                 onError={(e) => {
                   // Fallback to a default image if the main image fails to load
                   const target = e.target as HTMLImageElement;
