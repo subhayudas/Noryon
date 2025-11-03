@@ -8,6 +8,7 @@ import { slideInFromBottom } from "@/utils/motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import RadialOrbitalTimeline from "./RadialOrbitalTimeline";
 import { Trophy, Award, Star, Target, Rocket, Zap } from "lucide-react";
+import { PinContainer } from "@/components/ui/pin-container";
 
 const AchievementTimeline = () => {
   const containerRef = useRef(null);
@@ -111,13 +112,65 @@ const AchievementTimeline = () => {
           </motion.p>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <RadialOrbitalTimeline timelineData={timelineData} />
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Left Side - Radial Orbital Timeline */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="w-full"
+          >
+            <RadialOrbitalTimeline timelineData={timelineData} />
+          </motion.div>
+
+          {/* Right Side - Pin Container */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="w-full flex items-center justify-center min-h-[600px]"
+          >
+            <PinContainer
+              title="Explore Our Impact"
+              href="#"
+              containerClassName="w-full max-w-md"
+              className="text-white"
+            >
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-white">Key Highlights</h3>
+                <div className="space-y-4">
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Trophy className="w-5 h-5 text-yellow-400" />
+                      <h4 className="font-semibold text-white">Industry Leader</h4>
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      Recognized as a top AI solutions provider in 2024
+                    </p>
+                  </div>
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Rocket className="w-5 h-5 text-blue-400" />
+                      <h4 className="font-semibold text-white">Rapid Growth</h4>
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      Expanded operations across 3 continents
+                    </p>
+                  </div>
+                  <div className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Zap className="w-5 h-5 text-purple-400" />
+                      <h4 className="font-semibold text-white">Innovation</h4>
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      Launched breakthrough AI technologies
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </PinContainer>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
