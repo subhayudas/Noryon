@@ -36,15 +36,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/logo-removebg-preview.png', sizes: 'any' },
     ],
     apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    other: [
-      { rel: 'mask-icon', url: '/safari-pinned-tab.svg', color: '#000000' },
+      { url: '/logo-removebg-preview.png', sizes: '180x180', type: 'image/png' },
     ],
   },
   manifest: '/site.webmanifest',
@@ -90,11 +85,8 @@ export default function RootLayout({
         
         {/* Additional SEO and favicon links */}
         <link rel="canonical" href="https://www.Noryon.in/" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <link rel="icon" type="image/png" href="/logo-removebg-preview.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/logo-removebg-preview.png" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000000" />
         <meta name="application-name" content="Noryon" />
