@@ -15,7 +15,6 @@ import AchievementTimeline from "@/components/main/AchievementTimeline";
 import ProcessTimeline from "@/components/main/ProcessTimeline";
 import TeamSection from "@/components/main/TeamSection";
 import CallToAction from "@/components/main/CallToAction";
-import ContentMarketingCards from "@/components/main/ContentMarketingCards";
 import ContainerScroll from "@/components/main/ContainerScroll";
 import ContainerScrollTitle from "@/components/main/ContainerScrollTitle";
 
@@ -39,27 +38,7 @@ export default function Home() {
           <Services />
         </div>
         
-        {/* Content Marketing Cards Section */}
-        <div className="border-t border-white">
-          <ContentMarketingCards />
-        </div>
         
-        
-        
-        {/* Zoom Parallax Section */}
-        <div className="border-t border-white">
-          <ZoomParallax 
-            images={[
-              { src: "/imagezoom5.jpeg", alt: "Zoom Image 5" },
-              { src: "/imagezoom2.jpeg", alt: "Zoom Image 2" },
-              { src: "/imagezoom3.jpeg", alt: "Zoom Image 3" },
-              { src: "/imagezoom4.jpeg", alt: "Zoom Image 4" },
-              { src: "/imagezoom1.jpeg", alt: "Zoom Image 1" },
-              { src: "/imagezoom6.jpeg", alt: "Zoom Image 6" },
-              { src: "/imagezoom7.jpeg", alt: "Zoom Image 7" }
-            ]} 
-          />
-        </div>
         
         
         
@@ -88,6 +67,11 @@ export default function Home() {
         <div className="border-t border-white">
           <Statistics />
         </div>
+
+        {/* Team Section */}
+        <div className="border-t border-white">
+          <TeamSection />
+        </div>
         
         {/* Achievement Timeline */}
         <div className="border-t border-white">
@@ -99,10 +83,7 @@ export default function Home() {
           <ProcessTimeline />
         </div>
         
-        {/* Team Section */}
-        <div className="border-t border-white">
-          <TeamSection />
-        </div>
+        
         
         {/* Call to Action */}
         <div className="border-t border-white">
